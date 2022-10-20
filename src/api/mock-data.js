@@ -55,4 +55,4 @@ let INGREDIENTS = [
     }
 ]
 
-module.exports = {INGREDIENTS};
+export default INGREDIENTS;

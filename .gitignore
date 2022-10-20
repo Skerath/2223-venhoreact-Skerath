@@ -125,5 +125,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Discord Rich Presence
-.idea/discord.xml
+# IntelliJ files
+.idea/
