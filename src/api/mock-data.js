@@ -15,7 +15,7 @@ let INGREDIENTS = [
             }
         ],
         level_requirement: 2,
-        uses: ["Armouring", "Tailoring"]
+        uses: ["Armouring", "Tailoring", "Scribing", "Woodworking"]
     },
     {
         id: 2,
@@ -42,7 +42,11 @@ let INGREDIENTS = [
             {
                 name: "walk speed",
                 min: 0.03,
-                max: 0.05
+            },
+            {
+                name: "health",
+                min: 3,
+                max: 5
             },
             {
                 name: "durability",

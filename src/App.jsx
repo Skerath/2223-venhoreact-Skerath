@@ -3,11 +3,8 @@ import INGREDIENTS from './api/mock-data'
 
 function App() {
     return (
-        <div className="App">
-            {
-                INGREDIENTS.map(ingredient =>
-                    <Ingredient {...ingredient}/>)
-            }
+        <div className="App">{INGREDIENTS.map(ingredient =>
+            <Ingredient {...ingredient}/>)}
         </div>
     );
 }
