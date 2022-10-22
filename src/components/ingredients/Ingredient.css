@@ -1,6 +1,14 @@
 .card {
     text-align: center;
-    width: 18rem;
-    margin: 10px;
+    margin: 20px;
+    display: inline-flex;
+    min-width: 20rem;
+    max-width: 50rem;
+}
 
+.card-columns {
+    display: inline-flex;
+    justify-content: center;
+    /*width: 100vw;*/
+    flex-wrap: wrap;
 }

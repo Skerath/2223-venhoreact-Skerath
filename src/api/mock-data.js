@@ -36,6 +36,438 @@ let INGREDIENTS = [
         uses: ["Armouring"]
     },
     {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
+        id: 2,
+        name: "Brown Mushroom",
+        modifiers: [
+            {
+                name: "health",
+                min: 3,
+                max: 5
+            },
+            {
+                name: "durability",
+                min: -36,
+                max: -36
+            }
+        ],
+        level_requirement: 1,
+        uses: ["Armouring"]
+    },
+    {
         id: 3,
         name: "Crawler Eye",
         modifiers: [

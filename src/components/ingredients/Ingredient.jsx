@@ -4,6 +4,7 @@ export default function Ingredient(props) {
 
     let {id, name, modifiers, level_requirement, uses} = props;
 
+    // TODO: finalize looks and data of individual cards when database gets implemented
     return (
         <div id={id} className="card">
             <div className="card-body">
