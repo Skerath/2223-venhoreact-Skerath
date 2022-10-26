@@ -10,7 +10,7 @@ export default function Navbar() {
             let el_autohide;
             el_autohide = document.querySelector('.autohide');
 
-            if (el_autohide) {
+            // if (el_autohide) {
                 let last_scroll_top = 0;
                 window.addEventListener('scroll', function () {
                     let scroll_top = window.scrollY;
@@ -24,7 +24,7 @@ export default function Navbar() {
                     last_scroll_top = scroll_top;
                 });
             }
-        }
+        // }
     });
 
 
