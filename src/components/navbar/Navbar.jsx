@@ -1,25 +1,29 @@
 import './Navbar.css';
 import {NavLink} from "react-router-dom";
 import {useEffect} from 'react';
+import {useMediaQuery} from 'react-responsive';
 
 export default function Navbar() {
+    const isMobile = useMediaQuery({query: `(max-width: 760px)`});
     useEffect(() => {
-        let el_autohide;
-        el_autohide = document.querySelector('.autohide');
+        if (isMobile) {
+            let el_autohide;
+            el_autohide = document.querySelector('.autohide');
 
-        if (el_autohide) {
-            let last_scroll_top = 0;
-            window.addEventListener('scroll', function () {
-                let scroll_top = window.scrollY;
-                if (scroll_top < last_scroll_top) {
-                    el_autohide.classList.remove('scrolled-down');
-                    el_autohide.classList.add('scrolled-up');
-                } else {
-                    el_autohide.classList.remove('scrolled-up');
-                    el_autohide.classList.add('scrolled-down');
-                }
-                last_scroll_top = scroll_top;
-            });
+            if (el_autohide) {
+                let last_scroll_top = 0;
+                window.addEventListener('scroll', function () {
+                    let scroll_top = window.scrollY;
+                    if (scroll_top < last_scroll_top) {
+                        el_autohide.classList.remove('scrolled-down');
+                        el_autohide.classList.add('scrolled-up');
+                    } else {
+                        el_autohide.classList.remove('scrolled-up');
+                        el_autohide.classList.add('scrolled-down');
+                    }
+                    last_scroll_top = scroll_top;
+                });
+            }
         }
     });
 

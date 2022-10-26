@@ -3,7 +3,7 @@ export default function Locations() {
 
     return (
         <>
-            <a>Not implemented yet.</a>
+            <p>Not implemented yet.</p>
         </>
     );
 }
