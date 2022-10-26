@@ -1,12 +1,32 @@
 import './Navbar.css';
 import {NavLink} from "react-router-dom";
+import {useEffect} from 'react';
 
 export default function Navbar() {
+    useEffect(() => {
+        let el_autohide;
+        el_autohide = document.querySelector('.autohide');
+
+        if (el_autohide) {
+            let last_scroll_top = 0;
+            window.addEventListener('scroll', function () {
+                let scroll_top = window.scrollY;
+                if (scroll_top < last_scroll_top) {
+                    el_autohide.classList.remove('scrolled-down');
+                    el_autohide.classList.add('scrolled-up');
+                } else {
+                    el_autohide.classList.remove('scrolled-up');
+                    el_autohide.classList.add('scrolled-down');
+                }
+                last_scroll_top = scroll_top;
+            });
+        }
+    });
 
 
     return (
         <header>
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+            <nav className="autohide navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#main_nav" aria-controls="main_nav"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -58,3 +78,4 @@ export default function Navbar() {
     );
 
 }
+
