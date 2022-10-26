@@ -1,29 +1,60 @@
 import './Navbar.css';
+import {NavLink} from "react-router-dom";
 
 export default function Navbar() {
 
+
     return (
-        <nav className="navbar navbar-expand navbar-dark bg-dark fixed-top" >
-            <a className="navbar-brand" href="/">Venho</a>
-            <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="/locations">
-                        Locations
-                    </a>
-                </li>
-                <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="/items/ingredients" id="itemsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Items
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="itemsDropdown">
-                        <a className="nav-link active" href="/ingredients">Ingredients</a>
-                        <a className="nav-link" href="items/resources">Resources</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <header>
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#main_nav" aria-controls="main_nav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbar-brand">
+                    <NavLink className="navbar-brand" as={NavLink} to="/">Wynngman</NavLink>
+                </div>
+                <div className="navbar-collapse collapse" id="main_nav">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" as={NavLink} to="/locations">
+                                Locations
+                            </NavLink>
+                        </li>
+                        <li className="nav-item dropdown">
+                            <NavLink className="nav-link dropdown-toggle" as={NavLink} to="#" id="resourcesDropdown"
+                                     role="button"
+                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Resources
+                            </NavLink>
+                            <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="resourcesDropdown">
+                                <NavLink className="dropdown-item" as={NavLink}
+                                         to="/resources/ingredients">Ingredients</NavLink>
+                                <NavLink className="dropdown-item" as={NavLink}
+                                         to="/resources/resources">Resources</NavLink>
+                                <NavLink className="dropdown-item" as={NavLink}
+                                         to="/resources/powders">Powders</NavLink>
+                                <NavLink className="dropdown-item" as={NavLink}
+                                         to="/resources/potions">Potions</NavLink>
+                            </div>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" as={NavLink} to="/items/items">
+                                Items
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" as={NavLink} to="/items/custom-items">
+                                Custom Items
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     );
 
 }

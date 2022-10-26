@@ -1,4 +1,3 @@
-import Navbar from "./components/navbar/Navbar";
 import INGREDIENTS from "./api/mock-data";
 import Ingredient from "./components/ingredients/Ingredient";
 import Location from "./components/locations/Location";
@@ -7,13 +6,10 @@ import Location from "./components/locations/Location";
 export const Home = () => {
     return (
         <>
-            <header>
-                <Navbar/>
-            </header>
             <body>
             <div>
                 <>
-                    <a>Not implemented yet.</a>
+                    <p>Not implemented yet.</p>
                 </>
             </div>
             </body>
@@ -24,14 +20,9 @@ export const Home = () => {
 export const Ingredients = () => {
     return (
         <>
-            <header>
-                <Navbar/>
-            </header>
-            <body>
-            <div className="card-columns" >{INGREDIENTS.map(ingredient =>
+            <div className="card-columns">{INGREDIENTS.map(ingredient =>
                 <Ingredient {...ingredient}/>)}
             </div>
-            </body>
         </>
     );
 }
@@ -39,14 +30,7 @@ export const Ingredients = () => {
 export const Locations = () => {
     return (
         <>
-            <header>
-                <Navbar/>
-            </header>
-            <body>
-            <div>
-                <Location/>
-            </div>
-            </body>
+            <Location/>
         </>
     );
 }

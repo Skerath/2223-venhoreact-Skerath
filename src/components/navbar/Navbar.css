@@ -1,7 +1,11 @@
+header {
+    padding-bottom: 5rem;
+}
+
 .navbar {
     padding-left: 1rem;
 }
 
-header {
-    padding-bottom: 5rem;
+.navbar-toggler, #navbar-brand {
+    margin: 0.25rem;
 }
