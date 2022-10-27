@@ -4,7 +4,9 @@ import {useEffect} from 'react';
 import {useMediaQuery} from 'react-responsive';
 
 export default function Navbar() {
-    const isMobile = useMediaQuery({query: `(max-width: 760px)`});
+    let isMobile;
+    isMobile = useMediaQuery({query: `(max-width: 760px)`});
+
     useEffect(() => {
         if (isMobile) {
             let el_autohide;

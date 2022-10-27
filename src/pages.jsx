@@ -20,7 +20,7 @@ export const Home = () => {
 export const Ingredients = () => {
     return (
         <>
-            <div className="card-columns">{INGREDIENTS.map(ingredient =>
+            <div className="card-groups">{INGREDIENTS.map(ingredient =>
                 <Ingredient {...ingredient}/>)}
             </div>
         </>

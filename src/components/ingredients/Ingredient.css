@@ -1,14 +1,19 @@
+.card-groups {
+    display: inline-flex;
+    justify-content: center;
+    width: 100vw;
+    flex-wrap: wrap;
+    background-color: black;
+}
+
 .card {
     text-align: center;
-    margin: 20px;
     display: inline-flex;
     min-width: 20rem;
     max-width: 50rem;
+    margin: 2px;
 }
 
-.card-columns {
-    display: inline-flex;
-    justify-content: center;
-    /*width: 100vw;*/
-    flex-wrap: wrap;
+.card-body > * {
+    color: white;
 }
