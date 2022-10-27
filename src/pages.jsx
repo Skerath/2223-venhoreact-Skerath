@@ -1,6 +1,8 @@
 import INGREDIENTS from "./api/mock-data";
 import Ingredient from "./components/ingredients/Ingredient";
 import Location from "./components/locations/Location";
+import Filter from "./components/filter/Filter";
+import {useState} from "react";
 
 
 export const Home = () => {
@@ -18,10 +20,24 @@ export const Home = () => {
 }
 
 export const Ingredients = () => {
+    const [data, setData] = useState('');
+
     return (
         <>
-            <div className="card-groups">{INGREDIENTS.map(ingredient =>
-                <Ingredient {...ingredient}/>)}
+            <div>
+                <Filter output={setData}/>
+            </div>
+            <div className="card-groups">
+                {
+                    // TODO turn this into a backend api call
+                    INGREDIENTS
+                        .filter(ingredient => {
+                            if (!data) return ingredient
+                            return ingredient.name.toLowerCase().includes(data.toLowerCase());
+                        })
+                        .map(ingredient =>
+                            <Ingredient {...ingredient}/>)
+                }
             </div>
         </>
     );
