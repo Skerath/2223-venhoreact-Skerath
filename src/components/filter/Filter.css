@@ -1,12 +1,19 @@
-.input-group {
-}
-
-.input-group-text {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    color: white;
-}
-
-.form-control {
+.form-control, select > * {
     color: white !important;
+}
+
+.container > div {
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+input[type=text]:focus {
+    border: 2px solid;
+}
+
+.input-group {
+    min-width: 5rem;
+    max-width: 10rem;
 }

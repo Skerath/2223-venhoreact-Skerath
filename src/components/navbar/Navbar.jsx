@@ -60,7 +60,7 @@ export default function Navbar() {
                                 <NavLink className="dropdown-item" as={NavLink}
                                          to="/resources/ingredients">Ingredients</NavLink>
                                 <NavLink className="dropdown-item" as={NavLink}
-                                         to="/resources/resources">Resources</NavLink>
+                                         to="/resources/materials">Materials</NavLink>
                                 <NavLink className="dropdown-item" as={NavLink}
                                          to="/resources/powders">Powders</NavLink>
                                 <NavLink className="dropdown-item" as={NavLink}
