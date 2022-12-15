@@ -1,19 +1,11 @@
-.form-control, select > * {
+.bg-dark {
     color: white !important;
 }
 
-.container > div {
-    display: inline-flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-input[type=text]:focus {
+.form-control:focus {
     border: 2px solid;
 }
 
 .input-group {
-    min-width: 5rem;
-    max-width: 10rem;
+    margin: 0.5rem;
 }
