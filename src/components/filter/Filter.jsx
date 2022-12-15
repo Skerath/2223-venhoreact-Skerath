@@ -10,10 +10,8 @@ export default function Filter({input, output}) {
     const onUserInput = () => {
         let outputs = [];
         input.map(sublist => {
-            console.log(sublist.filterObjects)
-            sublist.filterObjects.forEach(filterObject => outputs.push(filterObject.ref.current.value))});
-
-        console.log(outputs);
+            sublist.filterObjects.forEach(filterObject => outputs.push(filterObject.ref.current.value))
+        });
         output(outputs);
     };
 
@@ -34,7 +32,6 @@ export default function Filter({input, output}) {
     const mapFilterKeys = (sublist) => { // Converts every filter object to HTML
         let filterObjectItems = []
         sublist.forEach(filterObject => {
-                console.log(`ref=${JSON.stringify(filterObject.ref)}`)
                 if (filterObject.inputType) // Filter object has an inputtype
                     filterObjectItems.push(
                         <div className="form-floating">
@@ -73,7 +70,6 @@ export default function Filter({input, output}) {
         )
         return (filterObjectItems);
     };
-
 
     return (
         <div className="d-flex flex-row flex-wrap justify-content-center mb-3">
