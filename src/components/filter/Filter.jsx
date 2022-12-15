@@ -16,59 +16,51 @@ export default function Filter({input, output}) {
     };
 
     const mapSelectOptions = (options) => {
-        let selectOptions = [];
-        options.forEach(option => {
+        return options.map(option => {
             if (option.selected)
-                selectOptions.push(
-                    <option selected value={option.value}>{option.displayName}</option>)
+                return (<option selected value={option.value}>{option.displayName}</option>)
             else
-                selectOptions.push(
-                    <option value={option.value}>{option.displayName}</option>)
+                return (<option value={option.value}>{option.displayName}</option>)
         });
-        return selectOptions;
     }
 
 
     const mapFilterKeys = (sublist) => { // Converts every filter object to HTML
-        let filterObjectItems = []
-        sublist.forEach(filterObject => {
-                if (filterObject.inputType) // Filter object has an inputtype
-                    filterObjectItems.push(
-                        <div className="form-floating">
-                            <input
-                                ref={filterObject.ref}
-                                onChange={onUserInput}
-                                type={filterObject.inputType}
-                                className="form-control bg-dark"
-                                placeholder=""
-                                id={filterObject.inputType + filterObject.displayName + "Input"}
-                                aria-label={filterObject.displayName}
-                                aria-describedby={filterObject.inputType + filterObject.displayName + "Input"}
-                            />
-                            <label
-                                htmlFor={filterObject.inputType + filterObject.displayName + "Input"}>{filterObject.displayName}</label>
-                        </div>);
-                else // Filter object does not have an input type => is of type selection
-                    filterObjectItems.push(
-                        <div className="form-floating">
-                            <select
-                                ref={filterObject.ref}
-                                onChange={onUserInput}
-                                className="form-control bg-dark"
-                                placeholder=""
-                                id={"select" + filterObject.displayName + "Select"}
-                                aria-label={filterObject.displayName}
-                                aria-describedby={"select" + filterObject.displayName + "Select"}
-                            >
-                                {mapSelectOptions(filterObject.selectOptions)}
-                            </select>
-                            <label
-                                htmlFor={"select" + filterObject.displayName + "Input"}>{filterObject.displayName}</label>
-                        </div>
-                    );
-            }
-        )
-        return (filterObjectItems);
+        return sublist.map(filterObject => {
+            if (filterObject.inputType)
+                return (
+                    <div className="form-floating">
+                        <input
+                            ref={filterObject.ref}
+                            onChange={onUserInput}
+                            type={filterObject.inputType}
+                            className="form-control bg-dark"
+                            placeholder=""
+                            id={filterObject.inputType + filterObject.displayName + "Input"}
+                            aria-label={filterObject.displayName}
+                            aria-describedby={filterObject.inputType + filterObject.displayName + "Input"}
+                        />
+                        <label
+                            htmlFor={filterObject.inputType + filterObject.displayName + "Input"}>{filterObject.displayName}</label>
+                    </div>
+                );
+            else
+                return (<div className="form-floating">
+                    <select
+                        ref={filterObject.ref}
+                        onChange={onUserInput}
+                        className="form-control bg-dark"
+                        placeholder=""
+                        id={"select" + filterObject.displayName + "Select"}
+                        aria-label={filterObject.displayName}
+                        aria-describedby={"select" + filterObject.displayName + "Select"}
+                    >
+                        {mapSelectOptions(filterObject.selectOptions)}
+                    </select>
+                    <label
+                        htmlFor={"select" + filterObject.displayName + "Input"}>{filterObject.displayName}</label>
+                </div>);
+        })
     };
 
     return (
