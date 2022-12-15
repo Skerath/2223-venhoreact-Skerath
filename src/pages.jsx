@@ -62,7 +62,9 @@ export const Ingredients = () => {
 
     return (
         <>
-            <Filter input={listOfFilterKeys} output={setData}/>
+            <div className="d-flex flex-row flex-wrap justify-content-center mb-3">
+                <Filter input={listOfFilterKeys} output={setData}/>
+            </div>
             <div className="card-groups">
                 {// TODO turn this into a backend api call
                     INGREDIENTS
