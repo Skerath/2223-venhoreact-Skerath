@@ -21,23 +21,110 @@ export const Home = () => {
 
 export const Ingredients = () => {
     const [data, setData] = useState('');
-    let input = [];
-    input.push(
-        {
-            displayName: "Name",
-            type: "text",
-            stylingOptions: {width: "15rem"},
-        },
-        {
-            displayName: "Tier",
-            type: "number",
-            stylingOptions: {width: "5rem"},
-        });
 
+    let listOfFilterKeys =
+        [
+            {
+                stylingOptions: {width: "15rem"},
+                filterObjects:
+                    [
+                        {
+                            displayName: "Name",
+                            inputType: "text",
+                            ref: {},
+                        }
+                    ]
+            },
+            {
+                stylingOptions: {width: "5rem"},
+                filterObjects:
+                    [
+                        {
+                            displayName: "Tier",
+                            inputType: "number",
+                            ref: {},
+                        }
+                    ]
+            },
+            {
+                stylingOptions: {width: "21rem"},
+                filterObjects:
+                    [
+                        {
+                            displayName: "MinLevel",
+                            inputType: "number",
+                            ref: {},
+                        },
+                        {
+                            displayName: "MaxLevel",
+                            inputType: "number",
+                            ref: {},
+                        },
+                    ]
+            },
+            {
+                stylingOptions: {width: "21rem"},
+                filterObjects:
+                    [
+                        {
+                            displayName: "Modifier",
+                            ref: {},
+                            selectOptions:
+                                [
+                                    // TODO: fill this array up with possible select options with an API query
+                                    {
+                                        selected: true,
+                                        value: "",
+                                        displayName: "Any",
+                                    },
+                                    {
+                                        value: "health",
+                                        displayName: "Health",
+                                    }
+                                ]
+                        },
+                    ]
+            },
+            {
+                stylingOptions: {width: "21rem"},
+                filterObjects:
+                    [
+                        {
+                            displayName: "Profession",
+                            ref: {},
+                            selectOptions:
+                                [
+                                    // TODO: fill this array up with possible select options with an API query
+                                    {
+                                        selected: true,
+                                        value: "",
+                                        displayName: "Any",
+                                    },
+                                    {
+                                        value: "armouring",
+                                        displayName: "Armouring",
+                                    },
+                                    {
+                                        value: "tailoring",
+                                        displayName: "Tailoring",
+                                    },
+                                    {
+                                        value: "woodworking",
+                                        displayName: "Woodworking",
+                                    },
+                                    {
+                                        value: "scribing",
+                                        displayName: "Scribing",
+                                    },
+                                ]
+                        },
+                    ]
+            }
+        ];
 
     return (
         <>
-            <Filter input={input} output={setData}/>
+            <Filter input={listOfFilterKeys} output={setData}/>
             <div className="card-groups">
                 {
                     // TODO turn this into a backend api call
@@ -49,19 +136,15 @@ export const Ingredients = () => {
                         })
                         .filter(ingredient => {
                             if (!data[1] || parseInt(data[1]) <= 0) return ingredient;
-                            return ingredient.id === parseInt(data[1]);
-                        })
-                        .filter(ingredient => {
-                            if (!data[2] || parseInt(data[2]) <= 0) return ingredient;
-                            return ingredient.level_requirement <= parseInt(data[2]);
-                        })
-                        .filter(ingredient => {
-                            if (!data[3]) return ingredient;
-                            return ingredient.modifiers.map(modifier => modifier.name).includes(data[3]);
+                            return ingredient.level_requirement === parseInt(data[1]);
                         })
                         .filter(ingredient => {
                             if (!data[4]) return ingredient;
-                            return ingredient.uses.includes(data[4]);
+                            return ingredient.modifiers.map(modifier => modifier.name).includes(data[4]);
+                        })
+                        .filter(ingredient => {
+                            if (!data[5]) return ingredient;
+                            return ingredient.uses.map(use => use.toUpperCase()).includes(data[5].toUpperCase());
                         })
                         .map(ingredient =>
                             <Ingredient {...ingredient}/>)
