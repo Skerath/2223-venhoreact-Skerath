@@ -1,8 +1,7 @@
-export default function FilterInput({inputObject, onChange}, key) {
+export default function FilterInput({inputObject, onChange}) {
     return (
         <div className="form-floating">
             <input
-                key={key}
                 ref={inputObject.ref}
                 onChange={onChange}
                 type={inputObject.inputType}

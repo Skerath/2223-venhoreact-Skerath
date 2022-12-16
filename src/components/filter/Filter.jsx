@@ -4,7 +4,7 @@ import FilterSelect from "./FilterSelect";
 
 export default function Filter({input, output}) {
 
-    // TODO: properly use ref. Right now it's broken (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    // TODO: properly use ref
     //  "Unexpected ref object provided for select. Use either a ref-setter function or React.createRef()."
 
     const onUserInput = () => {
@@ -16,23 +16,37 @@ export default function Filter({input, output}) {
     };
 
     return (
-        <div className="d-flex flex-row flex-wrap justify-content-center mb-3" key={generateKey()}>
-            {input.map(sublist =>
-                <div className="input-group" style={sublist.stylingOptions} key={generateKey()}>
-                    {sublist.filterObjects.map(item => item.inputType ?
-                        <FilterInput inputObject={item} onChange={onUserInput}
-                                     key={generateKey()}></FilterInput> :
-                        <FilterSelect selectObject={item} onChange={onUserInput}
-                                      key={generateKey()}></FilterSelect>)}
-                </div>
-            )}
+        <div className="d-flex flex-row flex-wrap justify-content-center mb-3">
+            {mapFilterGroups(input, onUserInput)}
         </div>
     );
 };
 
-let keycounter = {type: "filter", key: 0};
+function mapFilters(sublist, sublistcounter, onUserInput) {
+    let itemcounter = 0;
+    let newNewInput = [];
+    for (let item = 0; item < sublist.filterObjects.length; item++) {
+        newNewInput.push(sublist.filterObjects[item].inputType ?
+            <FilterInput inputObject={sublist.filterObjects[item]} onChange={onUserInput}
+                         key={`${sublistcounter}-${itemcounter}`}></FilterInput> :
+            <FilterSelect selectObject={sublist.filterObjects[item]} onChange={onUserInput}
+                          key={`${sublistcounter}-${itemcounter}`}></FilterSelect>);
+        itemcounter++;
+    }
+    return newNewInput;
+}
 
-function generateKey() {
-    keycounter.key++;
-    return `${keycounter.type}_${keycounter.key}`;
+function mapFilterGroups(input, onUserInput) {
+    let sublistcounter = 0;
+    let newInput = [];
+    for (let sublist = 0; sublist < input.length; sublist++) {
+        newInput.push(
+            <div className="input-group" style={input[sublist].stylingOptions} key={sublistcounter}>
+                {mapFilters(input[sublist], sublistcounter, onUserInput)}
+            </div>
+        );
+        sublistcounter++;
+    }
+    return newInput;
+
 }

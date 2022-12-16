@@ -1,8 +1,7 @@
-export default function FilterSelect({selectObject, onChange}, key) {
+export default function FilterSelect({selectObject, onChange}) {
     return (
-        <div className="form-floating" key={key}>
+        <div className="form-floating">
             <select
-                key={key}
                 ref={selectObject.ref}
                 onChange={onChange}
                 className="form-control bg-dark"
@@ -11,8 +10,7 @@ export default function FilterSelect({selectObject, onChange}, key) {
                 aria-label={selectObject.displayName}
                 aria-describedby={"select" + selectObject.displayName + "Select"}
             >
-                {selectObject.selectOptions.map(option =>
-                    <option value={option.value} key={generateKey()}>{option.displayName}</option>)}
+                {mapOptions(selectObject.selectOptions)}
             </select>
             <label
                 htmlFor={"select" + selectObject.displayName + "Input"}>{selectObject.displayName}</label>
@@ -20,9 +18,13 @@ export default function FilterSelect({selectObject, onChange}, key) {
     );
 };
 
-let keycounter = {type: "filterOption", key: 0};
-
-function generateKey() {
-    keycounter.key++;
-    return `${keycounter.type}_${keycounter.key}`;
+function mapOptions(options) {
+    let counter = 0;
+    let mappedOptions = []
+    options.forEach(option => {
+        mappedOptions.push(<option className={"bg-dark"} value={option.value}
+                                   key={counter}>{option.displayName}</option>);
+        counter++;
+    })
+    return mappedOptions;
 }
