@@ -6,21 +6,17 @@ import {useState} from "react";
 
 
 export const Home = () => {
-    return (<>
-        <body>
-        <div>
-            <>
-                <p>Not implemented yet.</p>
-            </>
-        </div>
-        </body>
-    </>);
+    return (
+        <main>
+            <p>Not implemented yet.</p>
+        </main>
+    );
 }
 
 export const Ingredients = () => {
     const [data, setData] = useState('');
 
-    let listOfFilterKeys = [{
+    const listOfFilterKeys = [{ // TODO turn this into a JSON file
         stylingOptions: {width: "15rem"}, filterObjects: [{
             displayName: "Name", inputType: "text", ref: {},
         }]
@@ -62,9 +58,7 @@ export const Ingredients = () => {
 
     return (
         <>
-            <div className="d-flex flex-row flex-wrap justify-content-center mb-3">
-                <Filter input={listOfFilterKeys} output={setData}/>
-            </div>
+            <Filter input={listOfFilterKeys} output={setData}/>
             <div className="card-groups">
                 {// TODO turn this into a backend api call
                     INGREDIENTS

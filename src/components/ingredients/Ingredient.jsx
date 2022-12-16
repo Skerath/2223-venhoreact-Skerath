@@ -5,7 +5,8 @@ export default function Ingredient(props) {
     let {id, name, modifiers, level_requirement, uses} = props;
 
 
-    // TODO: finalize looks and data of individual cards when database gets implemented
+    // TODO: get data from database, clean this shit up and use proper html tables, generateKey()
+    // TODO: change this into IngredientCard, create new component Ingredients. Clean up pages.jsx after this
     return (
         <div id={id} className="card bg-dark">
             <div className="card-body">
