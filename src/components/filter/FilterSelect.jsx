@@ -10,21 +10,13 @@ export default function FilterSelect({selectObject, onChange}) {
                 aria-label={selectObject.displayName}
                 aria-describedby={"select" + selectObject.displayName + "Select"}
             >
-                {mapOptions(selectObject.selectOptions)}
+                {selectObject.selectOptions.map((option, i) => {
+                    return (<option className={"bg-dark"} value={option.value}
+                                    key={i}>{option.displayName}</option>)
+                })}
             </select>
             <label
                 htmlFor={"select" + selectObject.displayName + "Input"}>{selectObject.displayName}</label>
         </div>
     );
 };
-
-function mapOptions(options) {
-    let counter = 0;
-    let mappedOptions = []
-    options.forEach(option => {
-        mappedOptions.push(<option className={"bg-dark"} value={option.value}
-                                   key={counter}>{option.displayName}</option>);
-        counter++;
-    })
-    return mappedOptions;
-}

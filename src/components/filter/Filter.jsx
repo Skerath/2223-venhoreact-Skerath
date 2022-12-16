@@ -17,36 +17,21 @@ export default function Filter({input, output}) {
 
     return (
         <div className="d-flex flex-row flex-wrap justify-content-center mb-3">
-            {mapFilterGroups(input, onUserInput)}
+            {input.map((sublist, sublistcounter) => { // filter groups
+                return (
+                    <div className="input-group" style={sublist.stylingOptions} key={sublistcounter}>
+                        {sublist.filterObjects.map((item, itemcounter) => { // individual filter objects
+                            return (
+                                item.inputType ?
+                                    <FilterInput inputObject={item} onChange={onUserInput}
+                                                 key={`${sublistcounter}-${itemcounter}`}></FilterInput> :
+                                    <FilterSelect selectObject={item} onChange={onUserInput}
+                                                  key={`${sublistcounter}-${itemcounter}`}></FilterSelect>
+                            );
+                        })}
+                    </div>
+                )
+            })}
         </div>
     );
 };
-
-function mapFilters(sublist, sublistcounter, onUserInput) {
-    let itemcounter = 0;
-    let newNewInput = [];
-    for (let item = 0; item < sublist.filterObjects.length; item++) {
-        newNewInput.push(sublist.filterObjects[item].inputType ?
-            <FilterInput inputObject={sublist.filterObjects[item]} onChange={onUserInput}
-                         key={`${sublistcounter}-${itemcounter}`}></FilterInput> :
-            <FilterSelect selectObject={sublist.filterObjects[item]} onChange={onUserInput}
-                          key={`${sublistcounter}-${itemcounter}`}></FilterSelect>);
-        itemcounter++;
-    }
-    return newNewInput;
-}
-
-function mapFilterGroups(input, onUserInput) {
-    let sublistcounter = 0;
-    let newInput = [];
-    for (let sublist = 0; sublist < input.length; sublist++) {
-        newInput.push(
-            <div className="input-group" style={input[sublist].stylingOptions} key={sublistcounter}>
-                {mapFilters(input[sublist], sublistcounter, onUserInput)}
-            </div>
-        );
-        sublistcounter++;
-    }
-    return newInput;
-
-}
