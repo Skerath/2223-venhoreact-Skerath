@@ -1,6 +1,12 @@
 import {useDebouncedCallback} from 'use-debounce';
 
-export default function FilterInput({inputObject, onChange, refs, refKey}) {
+const possibleInputTypes = ["text", "number"];
+
+export default function FilterInput(props) {
+    const {filterObject, onChange, refs, refKey} = props;
+
+    if (!possibleInputTypes.includes(String(filterObject.inputType)))
+        throw new Error(`inputType must be one of the following: [${possibleInputTypes}]. Current: ${filterObject.inputType}`)
 
     const debounced = useDebouncedCallback(() => {
         onChange();
@@ -13,16 +19,16 @@ export default function FilterInput({inputObject, onChange, refs, refKey}) {
                     refs.current[refKey] = element
                 }}
                 key={refKey}
-                onChange={(e) => debounced()}
-                type={inputObject.inputType}
+                onChange={() => debounced()}
+                type={filterObject.inputType}
                 className="form-control bg-dark"
                 placeholder=""
-                id={inputObject.inputType + inputObject.displayName + "Input"}
-                aria-label={inputObject.displayName}
-                aria-describedby={inputObject.inputType + inputObject.displayName + "Input"}
+                id={filterObject.inputType + filterObject.displayName + "Input"}
+                aria-label={filterObject.displayName}
+                aria-describedby={filterObject.inputType + filterObject.displayName + "Input"}
             />
             <label
-                htmlFor={inputObject.inputType + inputObject.displayName + "Input"}>{inputObject.displayName}</label>
+                htmlFor={filterObject.inputType + filterObject.displayName + "Input"}>{filterObject.displayName}</label>
         </div>
     );
 }

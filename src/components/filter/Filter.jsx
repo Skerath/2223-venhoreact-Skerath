@@ -3,6 +3,8 @@ import FilterInput from "./FilterInput";
 import FilterSelect from "./FilterSelect";
 import {useRef} from "react";
 
+const defaultStylingOptions = {width: "21rem"};
+
 export default function Filter({layout, output}) {
     const refKeysList = [];
     const refsList = useRef([]);
@@ -28,26 +30,37 @@ export default function Filter({layout, output}) {
 
     function mapFilterGroups() {
         return layout.map((sublist, sublistCounter) => {
+            if (sublist.stylingOptions === undefined) {
+                console.error(`stylingOptions for sublist #${sublistCounter} was not provided. Using default: ${JSON.stringify(defaultStylingOptions)}`);
+                sublist.stylingOptions = defaultStylingOptions;
+            }
             return (
                 <div className="input-group" style={sublist.stylingOptions} key={sublistCounter}>
-                    {mapFilterGroupItems(sublist, sublistCounter)}
+                    {mapFilterItems(sublist, sublistCounter)}
                 </div>
             );
         });
     }
 
-    function mapFilterGroupItems(sublist, sublistCounter) {
+    function mapFilterItems(sublist, sublistCounter) {
+
         return sublist.filterObjects.map((item, itemCounter) => {
             refKeysList.push(`${sublistCounter}-${itemCounter}`);
-            return (
-                item.inputType ?
-                    <FilterInput inputObject={item} onChange={onUserInput}
-                                 key={`${sublistCounter}-${itemCounter}`} refKey={`${sublistCounter}-${itemCounter}`}
-                                 refs={refsList}/> :
-                    <FilterSelect selectObject={item} onChange={onUserInput}
-                                  key={`${sublistCounter}-${itemCounter}`} refKey={`${sublistCounter}-${itemCounter}`}
-                                  refs={refsList}/>
-            );
+
+            const filterItemProps = {
+                filterObject: item,
+                onChange: onUserInput,
+                key: `${sublistCounter}-${itemCounter}`,
+                refKey: `${sublistCounter}-${itemCounter}`,
+                refs: refsList
+            };
+
+            if (filterItemProps.filterObject.inputType !== undefined)
+                return (<FilterInput {...filterItemProps}/>);
+            if (filterItemProps.filterObject.selectOptions !== undefined)
+                return (<FilterSelect {...filterItemProps}/>);
+            else
+                throw new Error(`FilterItem must either have an inputType or selectOptions`);
         });
     }
 };

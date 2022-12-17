@@ -14,7 +14,7 @@ const INGREDIENTS_FILTER_LAYOUT = [{
     },]
 }, {
     stylingOptions: {width: "21rem"}, filterObjects: [{
-        displayName: "Modifier", ref: {}, selectOptions: [// TODO: fill this array up with possible select options with an API query
+        displayName: "Modifier", selectOptions: [// TODO: fill this array up with possible select options with an API query
             {
                 selected: true, value: "", displayName: "Any",
             }, {
@@ -23,7 +23,7 @@ const INGREDIENTS_FILTER_LAYOUT = [{
     },]
 }, {
     stylingOptions: {width: "21rem"}, filterObjects: [{
-        displayName: "Profession", ref: {}, selectOptions: [// TODO: fill this array up with possible select options with an API query
+        displayName: "Profession", selectOptions: [// TODO: fill this array up with possible select options with an API query
             {
                 selected: true, value: "", displayName: "Any",
             }, {
