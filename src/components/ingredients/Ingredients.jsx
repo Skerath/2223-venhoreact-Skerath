@@ -1,33 +1,30 @@
-import INGREDIENTS from "../../api/mock-data";
 import IngredientCard from "./IngredientCard";
+import {useEffect, useState} from "react";
+import {getAll} from "./getAll";
 
-export default function Ingredients({data}) {
+export default function Ingredients({queryPrefix, data}) {
 
-    // let queryPrefix = [];
-    // INGREDIENTS_FILTER_LAYOUT.forEach(a => a.filterObjects.forEach(b => queryPrefix.push(b.displayName)));
-    // console.log("queryprefix= " + queryPrefix);
+    let [ingredients, setIngredients] = useState([]);
+
+    const paramsQuery = data.map((data, i) => {
+        if (data)
+            return `${queryPrefix[i].toLowerCase()}=${data}`
+        else
+            return ""
+    }).filter(Boolean).join("&");
+
+    useEffect(() => {
+        const getIngredients = async () => {
+            const data = await getAll(paramsQuery);
+            setIngredients(data);
+        }
+        getIngredients();
+    }, [paramsQuery]);
+
 
     return (
         <div className="card-groups">
-            {// TODO turn this into a backend api call
-                INGREDIENTS
-                    .filter(ingredient => {
-                        if (!data[0]) return ingredient;
-                        return ingredient.name.toLowerCase().includes(data[0]);
-                    })
-                    .filter(ingredient => {
-                        if (!data[1] || parseInt(data[1]) <= 0) return ingredient;
-                        return ingredient.level_requirement === parseInt(data[1]);
-                    })
-                    .filter(ingredient => {
-                        if (!data[4]) return ingredient;
-                        return ingredient.modifiers.map(modifier => modifier.name).includes(data[4]);
-                    })
-                    .filter(ingredient => {
-                        if (!data[5]) return ingredient;
-                        return ingredient.uses.map(use => use.toUpperCase()).includes(data[5].toUpperCase());
-                    })
-                    .map(ingredient => <IngredientCard {...ingredient}/>)}
+            {ingredients.map(ingredient => <IngredientCard {...ingredient}/>)}
         </div>
     );
 }

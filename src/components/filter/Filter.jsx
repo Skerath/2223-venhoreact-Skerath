@@ -3,47 +3,50 @@ import FilterInput from "./FilterInput";
 import FilterSelect from "./FilterSelect";
 import {useRef} from "react";
 
-
-export default function Filter({input, output}) {
+export default function Filter({layout, output}) {
     const refKeysList = [];
     const refsList = useRef([]);
 
+    const queryPrefix = [];
+    layout.forEach(sublist => sublist.filterObjects.forEach(parameter => queryPrefix.push(parameter.displayName)));
+
+
     return (
         <div className="d-flex flex-row flex-wrap justify-content-center mb-3">
-            {mapFilterGroups(input, onUserInput, refsList)}
+            {mapFilterGroups()}
         </div>
     );
+
 
     function onUserInput() {
         let outputs = [];
         for (let i = 0; i < refKeysList.length; i++)
-            if (refsList.current[refKeysList[i]])
-                outputs[i] = refsList.current[refKeysList[i]].value
-        output(outputs);
+            outputs[i] = refsList.current[refKeysList[i]].value
+        output({output: outputs, queryPrefix: queryPrefix});
     }
 
 
     function mapFilterGroups() {
-        return input.map((sublist, sublistcounter) => {
+        return layout.map((sublist, sublistCounter) => {
             return (
-                <div className="input-group" style={sublist.stylingOptions} key={sublistcounter}>
-                    {mapFilters(sublist, sublistcounter, onUserInput, refsList)}
+                <div className="input-group" style={sublist.stylingOptions} key={sublistCounter}>
+                    {mapFilterGroupItems(sublist, sublistCounter)}
                 </div>
             );
         });
     }
 
-    function mapFilters(sublist, sublistcounter) {
-        return sublist.filterObjects.map((item, itemcounter) => {
-            refKeysList.push(`${sublistcounter}-${itemcounter}`);
+    function mapFilterGroupItems(sublist, sublistCounter) {
+        return sublist.filterObjects.map((item, itemCounter) => {
+            refKeysList.push(`${sublistCounter}-${itemCounter}`);
             return (
                 item.inputType ?
                     <FilterInput inputObject={item} onChange={onUserInput}
-                                 key={`${sublistcounter}-${itemcounter}`} refKey={`${sublistcounter}-${itemcounter}`}
-                                 refs={refsList}></FilterInput> :
+                                 key={`${sublistCounter}-${itemCounter}`} refKey={`${sublistCounter}-${itemCounter}`}
+                                 refs={refsList}/> :
                     <FilterSelect selectObject={item} onChange={onUserInput}
-                                  key={`${sublistcounter}-${itemcounter}`} refKey={`${sublistcounter}-${itemcounter}`}
-                                  refs={refsList}></FilterSelect>
+                                  key={`${sublistCounter}-${itemCounter}`} refKey={`${sublistCounter}-${itemCounter}`}
+                                  refs={refsList}/>
             );
         });
     }

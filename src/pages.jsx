@@ -19,8 +19,8 @@ export const IngredientsPage = () => {
 
     return (
         <>
-            <Filter input={INGREDIENTS_FILTER_LAYOUT} output={setQuery}/>
-            <Ingredients data={query}></Ingredients>
+            <Filter layout={INGREDIENTS_FILTER_LAYOUT} output={setQuery}/>
+            <Ingredients queryPrefix={query.queryPrefix} data={query ? query.output : []}></Ingredients>
         </>
     );
 };
