@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router";
-import {Home, Ingredients, Locations} from "./pages";
+import {Home, IngredientsPage, Locations} from "./pages";
 import Navbar from "./components/navbar/Navbar";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
                 <Route path="ingredients" element={
                     <>
                         <Navbar/>
-                        <Ingredients/>
+                        <IngredientsPage/>
                     </>
                 }/>
                 {/*TODO implement*/}
