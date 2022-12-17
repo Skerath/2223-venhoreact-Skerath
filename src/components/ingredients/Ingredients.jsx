@@ -1,6 +1,6 @@
 import IngredientCard from "./IngredientCard";
 import {useEffect, useState} from "react";
-import {getAll} from "./getAll";
+import {getIngredients} from "../../api/getIngredients";
 
 export default function Ingredients({queryPrefix, data}) {
 
@@ -14,11 +14,11 @@ export default function Ingredients({queryPrefix, data}) {
     }).filter(Boolean).join("&");
 
     useEffect(() => {
-        const getIngredients = async () => {
-            const data = await getAll(paramsQuery);
+        const updateIngredientContainer = async () => {
+            const data = await getIngredients(paramsQuery);
             setIngredients(data);
         }
-        getIngredients();
+        updateIngredientContainer();
     }, [paramsQuery]);
 
 
