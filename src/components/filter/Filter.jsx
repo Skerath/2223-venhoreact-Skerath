@@ -45,7 +45,6 @@ export default function Filter({layout, output}) {
     function mapFilterItems(sublist, sublistCounter) {
 
         return sublist.filterObjects.map((item, itemCounter) => {
-            refKeysList.push(`${sublistCounter}-${itemCounter}`);
 
             const filterItemProps = {
                 filterObject: item,
@@ -55,12 +54,15 @@ export default function Filter({layout, output}) {
                 refs: refsList
             };
 
-            if (filterItemProps.filterObject.inputType !== undefined)
+            if (filterItemProps.filterObject.inputType !== undefined) {
+                refKeysList.push(`${sublistCounter}-${itemCounter}`);
                 return (<FilterInput {...filterItemProps}/>);
-            if (filterItemProps.filterObject.selectOptions !== undefined)
+            }
+            if (filterItemProps.filterObject.selectOptions !== undefined) {
+                refKeysList.push(`${sublistCounter}-${itemCounter}`);
                 return (<FilterSelect {...filterItemProps}/>);
-            else
-                throw new Error(`FilterItem must either have an inputType or selectOptions`);
+            }
+            throw new Error(`FilterItem must either have an inputType or selectOptions`);
         });
     }
 };
