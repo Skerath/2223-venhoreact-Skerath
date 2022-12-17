@@ -21,7 +21,7 @@ export default function Filter({layout, output}) {
     function onUserInput() {
         let outputs = [];
         for (let i = 0; i < refKeysList.length; i++)
-            outputs[i] = refsList.current[refKeysList[i]].value
+            outputs[i] = refsList.current[refKeysList[i]].value;
         output({output: outputs, queryPrefix: queryPrefix});
     }
 

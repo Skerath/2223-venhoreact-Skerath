@@ -1,10 +1,17 @@
+import {useDebouncedCallback} from 'use-debounce';
+
 export default function FilterInput({inputObject, onChange, refs, refKey}) {
+
+    const debounced = useDebouncedCallback(() => {onChange();},1000);
+
     return (
         <div className="form-floating">
             <input
-                ref={(element) => {refs.current[refKey] = element}}
+                ref={(element) => {
+                    refs.current[refKey] = element
+                }}
                 key={refKey}
-                onChange={onChange}
+                onChange={(e) => debounced()}
                 type={inputObject.inputType}
                 className="form-control bg-dark"
                 placeholder=""
