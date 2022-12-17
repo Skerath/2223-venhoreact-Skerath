@@ -2,7 +2,9 @@ import {useDebouncedCallback} from 'use-debounce';
 
 export default function FilterInput({inputObject, onChange, refs, refKey}) {
 
-    const debounced = useDebouncedCallback(() => {onChange();},1000);
+    const debounced = useDebouncedCallback(() => {
+        onChange();
+    }, 200);
 
     return (
         <div className="form-floating">
