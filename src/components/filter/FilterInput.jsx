@@ -1,9 +1,9 @@
-export default function FilterInput({inputObject, onChange, refs, keya}) {
+export default function FilterInput({inputObject, onChange, refs, refKey}) {
     return (
         <div className="form-floating">
             <input
-                ref={(element) => {refs.current[keya] = element}}
-                key={keya}
+                ref={(element) => {refs.current[refKey] = element}}
+                key={refKey}
                 onChange={onChange}
                 type={inputObject.inputType}
                 className="form-control bg-dark"

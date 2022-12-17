@@ -13,7 +13,6 @@ export default function Ingredients({data}) {
                 INGREDIENTS
                     .filter(ingredient => {
                         if (!data[0]) return ingredient;
-                        console.log(data[0]);
                         return ingredient.name.toLowerCase().includes(data[0]);
                     })
                     .filter(ingredient => {

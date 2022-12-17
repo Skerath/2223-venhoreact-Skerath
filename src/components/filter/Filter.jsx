@@ -16,19 +16,9 @@ export default function Filter({input, output}) {
 
     function onUserInput() {
         let outputs = [];
-
-        console.log("refKeysList= " + refKeysList);
-
-        for (let i = 0; i < refKeysList.length; i++) {
-            if (refsList.current[refKeysList[i]]) {
-                console.log(`refsList.current[${refKeysList[i]}].value= ` + refsList.current[refKeysList[i]].value);
+        for (let i = 0; i < refKeysList.length; i++)
+            if (refsList.current[refKeysList[i]])
                 outputs[i] = refsList.current[refKeysList[i]].value
-            }
-
-        }
-
-        console.log("outputs= " + outputs);
-
         output(outputs);
     }
 
@@ -49,10 +39,10 @@ export default function Filter({input, output}) {
             return (
                 item.inputType ?
                     <FilterInput inputObject={item} onChange={onUserInput}
-                                 key={`${sublistcounter}-${itemcounter}`} keya={`${sublistcounter}-${itemcounter}`}
+                                 key={`${sublistcounter}-${itemcounter}`} refKey={`${sublistcounter}-${itemcounter}`}
                                  refs={refsList}></FilterInput> :
                     <FilterSelect selectObject={item} onChange={onUserInput}
-                                  key={`${sublistcounter}-${itemcounter}`} keya={`${sublistcounter}-${itemcounter}`}
+                                  key={`${sublistcounter}-${itemcounter}`} refKey={`${sublistcounter}-${itemcounter}`}
                                   refs={refsList}></FilterSelect>
             );
         });

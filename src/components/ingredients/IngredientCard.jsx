@@ -1,12 +1,8 @@
 import './Ingredient.css';
 
-export default function IngredientCard(props) {
+export default function IngredientCard({id, name, modifiers, level_requirement, uses}) {
 
-    let {id, name, modifiers, level_requirement, uses} = props;
-
-
-    // TODO: get data from database, clean this shit up and use proper html tables, generateKey()
-    // TODO: create new component Ingredients. Clean up pages.jsx after this
+    // TODO: get data from database, clean this shit up and use proper html tables and with React keys
     return (
         <div id={id} className="card bg-dark">
             <div className="card-body">
