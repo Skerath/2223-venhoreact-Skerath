@@ -1,8 +1,8 @@
-export default function FilterSelect({selectObject, onChange}) {
+export default function FilterSelect({selectObject, onChange, refs, keya}) {
     return (
         <div className="form-floating">
             <select
-                ref={selectObject.ref}
+                ref={(element) => {refs.current[keya] = element}}
                 onChange={onChange}
                 className="form-control bg-dark"
                 defaultValue={selectObject.selectOptions.find(item => item.selected).value}
