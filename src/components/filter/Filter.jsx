@@ -5,13 +5,32 @@ import {useRef} from "react";
 
 
 export default function Filter({input, output}) {
-    let inputList = [];
-
-    // voor in ingredient.jsx
-    let queryPrefix = [];
-    input.forEach(a => a.filterObjects.forEach(b => queryPrefix.push(b.displayName)));
-
+    const refKeysList = [];
     const refsList = useRef([]);
+
+    return (
+        <div className="d-flex flex-row flex-wrap justify-content-center mb-3">
+            {mapFilterGroups(input, onUserInput, refsList)}
+        </div>
+    );
+
+    function onUserInput() {
+        let outputs = [];
+
+        console.log("refKeysList= " + refKeysList);
+
+        for (let i = 0; i < refKeysList.length; i++) {
+            if (refsList.current[refKeysList[i]]) {
+                console.log(`refsList.current[${refKeysList[i]}].value= ` + refsList.current[refKeysList[i]].value);
+                outputs[i] = refsList.current[refKeysList[i]].value
+            }
+
+        }
+
+        console.log("outputs= " + outputs);
+
+        output(outputs);
+    }
 
 
     function mapFilterGroups() {
@@ -26,7 +45,7 @@ export default function Filter({input, output}) {
 
     function mapFilters(sublist, sublistcounter) {
         return sublist.filterObjects.map((item, itemcounter) => {
-            inputList.push(`${sublistcounter}-${itemcounter}`);
+            refKeysList.push(`${sublistcounter}-${itemcounter}`);
             return (
                 item.inputType ?
                     <FilterInput inputObject={item} onChange={onUserInput}
@@ -38,31 +57,5 @@ export default function Filter({input, output}) {
             );
         });
     }
-
-
-    function onUserInput() {
-        let outputs = [];
-
-        console.log("inputList= " + inputList);
-        console.log(queryPrefix);
-
-        for (let i = 0; i < inputList.length; i++) {
-            if (refsList.current[inputList[i]]) {
-                console.log(`refsList.current[${inputList[i]}].value= ` + refsList.current[inputList[i]].value);
-                outputs[i] = refsList.current[inputList[i]].value
-            }
-
-        }
-
-        console.log("outputs= " + outputs);
-
-        output(outputs);
-    }
-
-    return (
-        <div className="d-flex flex-row flex-wrap justify-content-center mb-3">
-            {mapFilterGroups(input, onUserInput, refsList)}
-        </div>
-    );
 };
 
