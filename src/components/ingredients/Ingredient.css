@@ -7,30 +7,17 @@
 }
 
 .card {
-    text-align: center;
     display: inline-flex;
+    text-align: center;
     width: 20rem;
     margin: 5px;
 }
 
-.card-body > * {
-    color: white;
-}
-
-.text-right {
-    text-align: right !important;
-}
-
-.text-left {
-    text-align: left !important;
-}
-
-.card-header {
+.card-header, .card-body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-
 }
 
 .fadeIn {
