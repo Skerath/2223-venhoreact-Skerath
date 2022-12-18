@@ -11,6 +11,8 @@
     display: inline-flex;
     width: 20rem;
     margin: 5px;
+
+
 }
 
 .card-body > * {
@@ -31,4 +33,20 @@
     justify-content: center;
     align-items: center;
 
+}
+
+.cssanimation {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeInBottom
+}
+
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+    to {
+        opacity: 1
+    }
 }

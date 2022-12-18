@@ -1,5 +1,6 @@
 import './Ingredient.css';
 import {IoStar, IoStarOutline} from "react-icons/io5";
+import {useEffect} from "react";
 
 const stars = (amount) => {
     if (amount === 0)
@@ -27,8 +28,6 @@ const checkPositive = (input) => {
 
 export default function IngredientCard(props) {
 
-    // TODO clean up card layout, use proper HTML! react keys?
-
     const {
         resourceID,
         name,
@@ -39,8 +38,12 @@ export default function IngredientCard(props) {
         ...remainingProps
     } = props;
 
+    useEffect(() => {
+        console.log(`${resourceID} ingredient loaded in`)
+    });
+
     return (
-        <div className="card text-white bg-dark">
+        <div className="card cssanimation text-white bg-dark">
             <div className="card-header" style={{height: "10rem"}}>
                 <div className="w-100">
                     {stars(tier)}
