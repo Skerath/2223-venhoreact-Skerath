@@ -3,6 +3,7 @@ import {useCallback, useEffect, useState} from "react";
 import * as ingredientApi from "../../api/getIngredients";
 import {Error} from "../alert/Error";
 import {Message} from "../alert/Message";
+import Loader from "../Loader/Loader";
 
 const paramsQuery = (queryPrefix, data) => {
     return data.map((data, i) => {
@@ -19,17 +20,18 @@ export default function Ingredients({queryPrefix, data}) {
     //TODO implement loading, alert
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    let results;
 
     const updateIngredientContainer = useCallback(async () => {
         try {
             setIsLoading(true);
-            const results = await ingredientApi.getIngredients(paramsQuery(queryPrefix, data));
-            setIngredients(results);
+            results = await ingredientApi.getIngredients(paramsQuery(queryPrefix, data));
         } catch (err) {
             setError(err);
             console.log("errorstate:" + err);
         } finally {
             setIsLoading(false);
+            setIngredients(results);
         }
     }, [data, queryPrefix]);
 
@@ -41,7 +43,8 @@ export default function Ingredients({queryPrefix, data}) {
     return (
         <>
             <Error error={error}/>
-            {!error ? <div className="card-groups">
+            <Loader loading={isLoading}/>
+            {!error && !isLoading ? <div className="card-groups">
                 {ingredients.map(ingredient => <IngredientCard key={ingredient.resourceID} {...ingredient}/>)}
                 {ingredients.length === 0 && !isLoading ?
                     <Message message={"There were no results matching your query."}/> : null}
