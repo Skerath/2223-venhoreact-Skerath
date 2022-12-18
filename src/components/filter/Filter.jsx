@@ -30,7 +30,7 @@ export default function Filter({layout, output}) {
 
     function mapFilterGroups() {
         return layout.map((sublist, sublistCounter) => {
-            if (sublist.stylingOptions === undefined) {
+            if (!sublist.stylingOptions) {
                 console.error(`stylingOptions for sublist #${sublistCounter} was not provided. Using default: ${JSON.stringify(defaultStylingOptions)}`);
                 sublist.stylingOptions = defaultStylingOptions;
             }
@@ -54,11 +54,11 @@ export default function Filter({layout, output}) {
                 refs: refsList
             };
 
-            if (filterItemProps.filterObject.inputType !== undefined) {
+            if (filterItemProps.filterObject.inputType) {
                 refKeysList.push(`${sublistCounter}-${itemCounter}`);
                 return (<FilterInput {...filterItemProps}/>);
             }
-            if (filterItemProps.filterObject.selectOptions !== undefined) {
+            if (filterItemProps.filterObject.selectOptions) {
                 refKeysList.push(`${sublistCounter}-${itemCounter}`);
                 return (<FilterSelect {...filterItemProps}/>);
             }
