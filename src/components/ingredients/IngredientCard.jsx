@@ -1,6 +1,5 @@
 import './Ingredient.css';
 import {IoStar, IoStarOutline} from "react-icons/io5";
-import {useEffect} from "react";
 
 const stars = (amount) => {
     if (amount === 0)
