@@ -35,12 +35,10 @@ export default function IngredientCard(props) {
             <div className="card-body">
                 {stars(tier)}
                 <h2 className="card-title text-center">{name}</h2>
-                <p className="card-text">
-                    Crafting level required: {level} <br/>
-                    Ingredient Tier: {tier}
-                </p>
+                <h3 className="card-subtitle">&lt;&nbsp;Level&nbsp;{level}&nbsp;&gt;</h3>
                 <div className="table"></div>
-                <table className="table">{Object.keys(modifiers).map((key) => (
+                <table className="table">
+                    {Object.keys(modifiers).map((key) => (
                     <tr>
                         <td className="col">{modifiers[key].minimum} {modifiers[key].minimum ? ` to  ${modifiers[key].maximum}` : ""} </td>
                         <td className="col">{key}</td>
