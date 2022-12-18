@@ -2,7 +2,7 @@ import './Filter.css';
 import FilterInput from "./FilterInput";
 import FilterSelect from "./FilterSelect";
 import {useRef} from "react";
-import {Error} from "../error/Error";
+import {Error} from "../alert/Error";
 
 const defaultStylingOptions = {width: "21rem"};
 let outputs;

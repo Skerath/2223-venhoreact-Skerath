@@ -1,4 +1,4 @@
-import {Error} from "../error/Error";
+import {Error} from "../alert/Error";
 
 let defaultSelected;
 

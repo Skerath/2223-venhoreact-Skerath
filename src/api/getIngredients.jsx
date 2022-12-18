@@ -6,5 +6,6 @@ export const getIngredients = async (paramsQuery) => {
     const {
         data
     } = await axios.get(baseUrl + paramsQuery);
+
     return data;
 };

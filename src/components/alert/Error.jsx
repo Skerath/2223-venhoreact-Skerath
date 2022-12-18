@@ -1,4 +1,4 @@
-import './Errror.css';
+import './Alert.css';
 
 const defaultStylingOptions = {margin: "15vw"}
 

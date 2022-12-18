@@ -1,7 +1,8 @@
 import IngredientCard from "./IngredientCard";
 import {useCallback, useEffect, useState} from "react";
 import * as ingredientApi from "../../api/getIngredients";
-import {Error} from "../error/Error";
+import {Error} from "../alert/Error";
+import {Message} from "../alert/Message";
 
 const paramsQuery = (queryPrefix, data) => {
     return data.map((data, i) => {
@@ -15,7 +16,7 @@ const paramsQuery = (queryPrefix, data) => {
 export default function Ingredients({queryPrefix, data}) {
 
     const [ingredients, setIngredients] = useState([]);
-    //TODO implement loading, error
+    //TODO implement loading, alert
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -41,6 +42,7 @@ export default function Ingredients({queryPrefix, data}) {
         <>
             <Error error={error}/>
             {!error ? <div className="card-groups">
+                {ingredients.length === 0 ? <Message message={"There were no results matching your query."}/> : null}
                 {ingredients.map(ingredient => <IngredientCard key={ingredient.resourceID} {...ingredient}/>)}
             </div> : null}
         </>

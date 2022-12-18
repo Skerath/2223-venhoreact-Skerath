@@ -1,5 +1,5 @@
 import {useDebouncedCallback} from 'use-debounce';
-import {Error} from "../error/Error";
+import {Error} from "../alert/Error";
 
 const possibleInputTypes = ["text", "number"];
 const validateInputType = (filterObject) => {
