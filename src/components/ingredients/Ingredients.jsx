@@ -22,14 +22,14 @@ export default function Ingredients({queryPrefix, data}) {
 
     const updateIngredientContainer = useCallback(async () => {
         try {
-            // setIsLoading(true);
+            setIsLoading(true);
             const results = await ingredientApi.getIngredients(paramsQuery(queryPrefix, data));
             setIngredients(results);
         } catch (err) {
             setError(err);
             console.log("errorstate:" + err);
         } finally {
-            // setIsLoading(false);
+            setIsLoading(false);
         }
     }, [data, queryPrefix]);
 
@@ -42,8 +42,9 @@ export default function Ingredients({queryPrefix, data}) {
         <>
             <Error error={error}/>
             {!error ? <div className="card-groups">
-                {ingredients.length === 0 ? <Message message={"There were no results matching your query."}/> : null}
                 {ingredients.map(ingredient => <IngredientCard key={ingredient.resourceID} {...ingredient}/>)}
+                {ingredients.length === 0 && !isLoading ?
+                    <Message message={"There were no results matching your query."}/> : null}
             </div> : null}
         </>
     );
