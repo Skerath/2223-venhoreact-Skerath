@@ -1,5 +1,6 @@
 import './Ingredient.css';
 import {IoStar, IoStarOutline} from "react-icons/io5";
+import {memo} from "react";
 
 const stars = (amount) => {
     if (amount === 0)
@@ -78,8 +79,8 @@ function requirementsTable(requirements) {
     </table>;
 }
 
-export default function IngredientCard(props) {
 
+export default memo(function IngredientCard(props) {
     const {
         resourceID,
         name,
@@ -110,4 +111,4 @@ export default function IngredientCard(props) {
             </div>
         </div>
     );
-};
+});

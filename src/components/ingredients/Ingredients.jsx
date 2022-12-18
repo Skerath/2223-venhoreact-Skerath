@@ -1,25 +1,40 @@
 import IngredientCard from "./IngredientCard";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {getIngredients} from "../../api/getIngredients";
 
-export default function Ingredients({queryPrefix, data}) {
-
-    let [ingredients, setIngredients] = useState([]);
-
-    const paramsQuery = data.map((data, i) => {
+const paramsQuery = (queryPrefix, data) => {
+    return data.map((data, i) => {
         if (data)
             return `${queryPrefix[i].toLowerCase()}=${data}`
         else
             return ""
     }).filter(Boolean).join("&");
+};
+
+export default function Ingredients({queryPrefix, data}) {
+
+    const [ingredients, setIngredients] = useState([]);
+    //TODO implement loading, error
+    const [isLoading, setIsLoading] = useState();
+    const [error, setError] = useState();
+
+    const updateIngredientContainer = useCallback(async () => {
+        try {
+            setIsLoading(true);
+            setError(null);
+            const results = await getIngredients(paramsQuery(queryPrefix, data));
+            setIngredients(results);
+        } catch (err) {
+            setError(err);
+        } finally {
+            setIsLoading(false);
+        }
+    }, [data, queryPrefix]);
+
 
     useEffect(() => {
-        const updateIngredientContainer = async () => {
-            const data = await getIngredients(paramsQuery);
-            setIngredients(data);
-        }
         updateIngredientContainer();
-    }, [paramsQuery]);
+    }, [updateIngredientContainer]);
 
 
     return (
