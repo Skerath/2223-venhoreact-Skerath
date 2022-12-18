@@ -1,4 +1,20 @@
 import './Ingredient.css';
+import {IoStar, IoStarOutline} from "react-icons/io5";
+
+const stars = (amount) => {
+    if (amount === 0)
+        return (<IoStarOutline size={25}/>);
+
+    let color;
+
+    if (amount === 1)
+        color = "#B55800"
+    else if (amount === 2)
+        color = "silver"
+    else
+        color = "gold"
+    return (<>{[...new Array(amount)].map((_, i) => <IoStar key={i} size={25} color={color}/>)}</>);
+};
 
 export default function IngredientCard(props) {
 
@@ -17,7 +33,8 @@ export default function IngredientCard(props) {
     return (
         <div id={resourceID} className="card bg-dark">
             <div className="card-body">
-                <h2 className="card-title">{name}</h2>
+                {stars(tier)}
+                <h2 className="card-title text-center">{name}</h2>
                 <p className="card-text">
                     Crafting level required: {level} <br/>
                     Ingredient Tier: {tier}

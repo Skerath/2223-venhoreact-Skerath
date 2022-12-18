@@ -9,11 +9,15 @@
 .card {
     text-align: center;
     display: inline-flex;
-    min-width: 20rem;
-    max-width: 50rem;
-    margin: 2px;
+    width: 20rem !important;
+    margin: 5px;
 }
 
 .card-body > * {
     color: white;
+}
+
+.aaaaa {
+    display: block;
+    width: 200px;
 }
