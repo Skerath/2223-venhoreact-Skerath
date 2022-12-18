@@ -98,7 +98,7 @@ export default function IngredientCard(props) {
                     {stars(tier)}
                 </div>
                 <h2 className="card-title text-center mb-0">{name}</h2>
-                <h3 className="card-subtitle">&lt;&nbsp;Level&nbsp;{level}&nbsp;&gt;</h3>
+                <h3 className="card-subtitle w-100">&lt;&nbsp;Level&nbsp;{level}&nbsp;&gt;</h3>
             </div>
             <div className="card-body">
                 {modifiersTable(modifiers)}
