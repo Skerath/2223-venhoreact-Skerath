@@ -19,7 +19,7 @@ export default function Ingredients({queryPrefix, data}) {
             setIngredients(data);
         }
         updateIngredientContainer();
-    }, [queryPrefix]);
+    }, [paramsQuery]);
 
 
     return (
