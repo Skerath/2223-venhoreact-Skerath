@@ -40,41 +40,41 @@ export default function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div id="navbar-brand">
-                    <NavLink className="navbar-brand" as={NavLink} to="/">Wynngman</NavLink>
+                    <NavLink className="navbar-brand" as={NavLink} to="/" replace>Wynngman</NavLink>
                 </div>
                 <div className="navbar-collapse collapse" id="main_nav">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" as={NavLink} to="/locations">
+                            <NavLink className="nav-link" as={NavLink} to="/locations" replace>
                                 Locations
                             </NavLink>
                         </li>
                         <li className="nav-item dropdown">
                             <NavLink className="nav-link dropdown-toggle" as={NavLink} to="#" id="resourcesDropdown"
                                      role="button"
-                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" replace>
                                 Resources
                             </NavLink>
                             <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="resourcesDropdown">
                                 <NavLink className="dropdown-item" as={NavLink}
-                                         to="/resources/ingredients">Ingredients</NavLink>
+                                         to="/resources/ingredients" replace>Ingredients</NavLink>
                                 <NavLink className="dropdown-item" as={NavLink}
-                                         to="/resources/materials">Materials</NavLink>
+                                         to="/resources/materials" replace>Materials</NavLink>
                                 <NavLink className="dropdown-item" as={NavLink}
-                                         to="/resources/powders">Powders</NavLink>
+                                         to="/resources/powders" replace>Powders</NavLink>
                                 <NavLink className="dropdown-item" as={NavLink}
-                                         to="/resources/potions">Potions</NavLink>
+                                         to="/resources/potions" replace>Potions</NavLink>
                             </div>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" as={NavLink} to="/items/items">
+                            <NavLink className="nav-link" as={NavLink} to="/items/items" replace>
                                 Items
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" as={NavLink} to="/items/custom-items">
+                            <NavLink className="nav-link" as={NavLink} to="/items/custom-items" replace>
                                 Custom Items
                             </NavLink>
                         </li>

@@ -13,13 +13,13 @@ export default function FilterInput(props) {
 
     const debounced = useDebouncedCallback(() => {
         onUserInput();
-    }, 200);
+    }, 400);
 
     return (
         <div className="form-floating">
             <input
                 ref={(element) => {
-                    refs.current[refKey] = element
+                    refs.current[refKey] = element;
                 }}
                 key={refKey}
                 onChange={() => debounced()}
