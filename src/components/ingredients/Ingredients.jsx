@@ -1,6 +1,6 @@
 import IngredientCard from "./IngredientCard";
 import {useCallback, useEffect, useState} from "react";
-import {getIngredients} from "../../api/getIngredients";
+import * as ingredientApi from "../../api/getIngredients";
 
 const paramsQuery = (queryPrefix, data) => {
     return data.map((data, i) => {
@@ -22,7 +22,7 @@ export default function Ingredients({queryPrefix, data}) {
         try {
             setIsLoading(true);
             setError(null);
-            const results = await getIngredients(paramsQuery(queryPrefix, data));
+            const results = await ingredientApi.getIngredients(paramsQuery(queryPrefix, data));
             setIngredients(results);
         } catch (err) {
             setError(err);

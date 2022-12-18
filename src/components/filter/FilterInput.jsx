@@ -1,15 +1,18 @@
 import {useDebouncedCallback} from 'use-debounce';
 
 const possibleInputTypes = ["text", "number"];
+const validateInputType = (inputType) => {
+    if (!possibleInputTypes.includes(String(inputType)))
+        throw new Error(`inputType must be one of the following: [${possibleInputTypes}]. Current: ${inputType}`)
+};
 
 export default function FilterInput(props) {
-    const {filterObject, onChange, refs, refKey} = props;
+    const {filterObject, onUserInput, refs, refKey} = props;
 
-    if (!possibleInputTypes.includes(String(filterObject.inputType)))
-        throw new Error(`inputType must be one of the following: [${possibleInputTypes}]. Current: ${filterObject.inputType}`)
+    validateInputType(filterObject.inputType)
 
     const debounced = useDebouncedCallback(() => {
-        onChange();
+        onUserInput();
     }, 200);
 
     return (
