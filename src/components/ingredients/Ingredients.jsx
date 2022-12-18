@@ -24,7 +24,7 @@ export default function Ingredients({queryPrefix, data}) {
 
     return (
         <div className="card-groups">
-            {ingredients.map(ingredient => <IngredientCard {...ingredient}/>)}
+            {ingredients.map(ingredient => <IngredientCard key={ingredient.resourceID} {...ingredient}/>)}
         </div>
     );
 }
