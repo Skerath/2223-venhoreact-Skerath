@@ -17,14 +17,22 @@ const stars = (amount) => {
     return (<>{[...new Array(amount)].map((_, i) => <IoStar key={i} size={25} color={color}/>)}</>);
 };
 
-const checkColor = (input) => {
+const defineModifierColor = (input) => {
     return input < 0 ? "red" : "green";
-}
+};
 
-const checkPositive = (input) => {
+const defineRequirementColor = (input) => {
+    return input < 0 ? "green" : "red";
+};
 
+const addPositivePrefix = (input) => {
     return input < 0 ? input : `+${input}`;
-}
+};
+
+const beautifyText = (input) => {
+    return input.toLowerCase().split("_").map(word => word[0].toUpperCase() + word.slice(1)).join(" ");
+};
+
 
 export default function IngredientCard(props) {
 
@@ -35,15 +43,11 @@ export default function IngredientCard(props) {
         level,
         professions,
         modifiers,
-        ...remainingProps
+        ...requirements
     } = props;
 
-    useEffect(() => {
-        console.log(`${resourceID} ingredient loaded in`)
-    });
-
     return (
-        <div className="card cssanimation text-white bg-dark">
+        <div className="card fadeIn text-white bg-dark">
             <div className="card-header" style={{height: "10rem"}}>
                 <div className="w-100">
                     {stars(tier)}
@@ -52,40 +56,43 @@ export default function IngredientCard(props) {
                 <h3 className="card-subtitle">&lt;&nbsp;Level&nbsp;{level}&nbsp;&gt;</h3>
             </div>
             <div className="card-body">
-                <table className="table">
+                <table key={'modifiersTable'} className="table">
                     <tbody>
                     {Object.keys(modifiers).map((key, i) => (
-                        <tr>
-                            <td className="text-left">
-                                <span
-                                    style={{color: checkColor(modifiers[key].minimum)}}>{checkPositive(modifiers[key].minimum)}</span>
+                        <tr key={i}>
+                            <td key={`${i}_left`} className="text-left">
+                                <span key={'minimum_value'}
+                                      style={{color: defineModifierColor(modifiers[key].minimum)}}>{addPositivePrefix(modifiers[key].minimum)}</span>
                                 &nbsp;to&nbsp;
-                                <span
-                                    style={{color: checkColor(modifiers[key].maximum)}}>{checkPositive(modifiers[key].maximum)}</span>
+                                <span key={'maximum_value'}
+                                      style={{color: defineModifierColor(modifiers[key].maximum)}}>{addPositivePrefix(modifiers[key].maximum)}</span>
                             </td>
-                            <td className="text-right">
-                                {key}
+                            <td key={`${i}_right`} className="text-right">
+                                {beautifyText(key)}
                             </td>
                         </tr>))}
                     </tbody>
                 </table>
-
-
-                {/*<table className="table">{professions.map((use) => (*/}
-                {/*    <tr>*/}
-                {/*        <td className="col">{use}</td>*/}
-                {/*    </tr>))}*/}
-                {/*</table>*/}
-                {/*<table className="table">{Object.keys(remainingProps).map((key) => {*/}
-                {/*    if (remainingProps[key])*/}
-                {/*        return (*/}
-                {/*            <tr>*/}
-                {/*                <td className="col">{key}: {remainingProps[key]}</td>*/}
-                {/*            </tr>);*/}
-                {/*    else*/}
-                {/*        return null;*/}
-                {/*})}*/}
-                {/*</table>*/}
+                <table key={'requirements'} className="table">
+                    <tbody>
+                    {Object.keys(requirements).map((key, i) => {
+                        if (requirements[key])
+                            return (
+                                <tr key={i}>
+                                    <td key={`${i}_left`} className="text-left"
+                                        style={{color: defineRequirementColor(requirements[key])}}>{addPositivePrefix(requirements[key])}</td>
+                                    <td key={`${i}_right`} className="text-right">{beautifyText(key)}</td>
+                                </tr>);
+                        else
+                            return null;
+                    })}
+                    </tbody>
+                </table>
+            </div>
+            <div className="card-footer py-3 px-0">
+                <h6 className="mb-0">{professions.map((profession, i) => {
+                    return beautifyText(profession);
+                }).join(", ")}</h6>
             </div>
         </div>
     );

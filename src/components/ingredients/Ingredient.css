@@ -11,8 +11,6 @@
     display: inline-flex;
     width: 20rem;
     margin: 5px;
-
-
 }
 
 .card-body > * {
@@ -35,7 +33,7 @@
 
 }
 
-.cssanimation {
+.fadeIn {
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-name: fadeInBottom
