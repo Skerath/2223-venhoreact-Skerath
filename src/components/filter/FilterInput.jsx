@@ -1,19 +1,29 @@
 import {useDebouncedCallback} from 'use-debounce';
+import {Error} from "../error/Error";
 
 const possibleInputTypes = ["text", "number"];
-const validateInputType = (inputType) => {
-    if (!possibleInputTypes.includes(String(inputType)))
-        throw new Error(`inputType must be one of the following: [${possibleInputTypes}]. Current: ${inputType}`)
+const validateInputType = (filterObject) => {
+    if (filterObject === undefined || filterObject.inputType === undefined) {
+        console.error(`filterObject(s) or filterObject.inputType hasn't been provided`);
+        return <Error styling={{width: null}}
+                      error={"Filter has been set-up incorrectly. Please contact the developer."}/>;
+    }
+
+    if (!possibleInputTypes.includes(String(filterObject.inputType))) {
+        console.error(`inputType must be one of the following: [${possibleInputTypes}]. Current: ${filterObject.inputType}`);
+        return <Error styling={{width: null}}
+                      error={"Filter has been set-up incorrectly. Please contact the developer."}/>;
+    }
 };
 
 export default function FilterInput(props) {
     const {filterObject, onUserInput, refs, refKey} = props;
-
-    validateInputType(filterObject.inputType)
-
     const debounced = useDebouncedCallback(() => {
         onUserInput();
     }, 400);
+
+    const hasError = validateInputType(filterObject);
+    if (hasError) return hasError;
 
     return (
         <div className="form-floating">

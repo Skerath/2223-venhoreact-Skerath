@@ -1,6 +1,7 @@
 import IngredientCard from "./IngredientCard";
 import {useCallback, useEffect, useState} from "react";
 import * as ingredientApi from "../../api/getIngredients";
+import {Error} from "../error/Error";
 
 const paramsQuery = (queryPrefix, data) => {
     return data.map((data, i) => {
@@ -15,19 +16,19 @@ export default function Ingredients({queryPrefix, data}) {
 
     const [ingredients, setIngredients] = useState([]);
     //TODO implement loading, error
-    const [isLoading, setIsLoading] = useState();
-    const [error, setError] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const updateIngredientContainer = useCallback(async () => {
         try {
-            setIsLoading(true);
-            setError(null);
+            // setIsLoading(true);
             const results = await ingredientApi.getIngredients(paramsQuery(queryPrefix, data));
             setIngredients(results);
         } catch (err) {
             setError(err);
+            console.log("errorstate:" + err);
         } finally {
-            setIsLoading(false);
+            // setIsLoading(false);
         }
     }, [data, queryPrefix]);
 
@@ -36,10 +37,12 @@ export default function Ingredients({queryPrefix, data}) {
         updateIngredientContainer();
     }, [updateIngredientContainer]);
 
-
     return (
-        <div className="card-groups">
-            {ingredients.map(ingredient => <IngredientCard key={ingredient.resourceID} {...ingredient}/>)}
-        </div>
+        <>
+            <Error error={error}/>
+            {!error ? <div className="card-groups">
+                {ingredients.map(ingredient => <IngredientCard key={ingredient.resourceID} {...ingredient}/>)}
+            </div> : null}
+        </>
     );
 }

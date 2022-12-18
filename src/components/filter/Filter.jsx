@@ -2,6 +2,7 @@ import './Filter.css';
 import FilterInput from "./FilterInput";
 import FilterSelect from "./FilterSelect";
 import {useRef} from "react";
+import {Error} from "../error/Error";
 
 const defaultStylingOptions = {width: "21rem"};
 let outputs;
@@ -25,9 +26,11 @@ const mapFilterItems = (sublist, sublistCounter, onUserInput, refsList) => {
             mappedItem = (<FilterInput {...filterItemProps}/>);
         else if (filterItemProps.filterObject.selectOptions)
             mappedItem = (<FilterSelect {...filterItemProps}/>);
-        else
-            throw new Error(`FilterItem must either have an inputType or selectOptions`);
-
+        else {
+            console.error(`Filter layout was not set-up correctly: FilterItem must either have an inputType or selectOptions`);
+            return (<Error styling={{width: null}}
+                           error={"Filter has been set-up incorrectly. Please contact the developer."}/>);
+        }
         refKeysList.push(`${sublistCounter}-${itemCounter}`);
         return mappedItem;
     });
