@@ -42,8 +42,8 @@ export default function Ingredients({queryPrefix, data}) {
 
     return (
         <>
-            <Error error={error}/>
             <Loader loading={isLoading}/>
+            {!isLoading ? <Error error={error}/> : null}
             {!error && !isLoading ? <div className="card-groups">
                 {ingredients.map(ingredient => <IngredientCard key={ingredient.resourceID} {...ingredient}/>)}
                 {ingredients.length === 0 && !isLoading ?
