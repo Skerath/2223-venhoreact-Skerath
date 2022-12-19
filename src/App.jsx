@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router";
-import {Home, IngredientsPage, Locations} from "./pages";
+import {HomePage, IngredientsPage, Locations} from "./pages";
 import Navbar from "./components/navbar/Navbar";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
@@ -10,8 +10,7 @@ function App() {
             <Routes>
                 <Route index element={
                     <>
-                        <Navbar/>
-                        <Home/>
+                        <HomePage/>
                     </>
                 }/>
 
