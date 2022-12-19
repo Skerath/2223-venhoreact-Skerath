@@ -42,7 +42,7 @@ body {
     top: 0;
     z-index: 1;
 
-    transition: opacity 800ms ease, background-size 800ms ease;
+    transition: opacity 800ms ease, background-size 800ms ease, background-position 800ms ease ;
 }
 
 #menu-items:hover ~ #menu-background-pattern {
@@ -50,20 +50,8 @@ body {
     opacity: 0.5;
 }
 
-#menu[data-active-index="0"] > #menu-background-pattern {
-    background-position: 0 -25%;
-}
-
-#menu[data-active-index="1"] > #menu-background-pattern {
-    background-position: 0 -50%
-}
-
-#menu[data-active-index="2"] > #menu-background-pattern {
-    background-position: 0 -75%
-}
-
-#menu[data-active-index="3"] > #menu-background-pattern {
-    background-position: 0 -100%
+#menu > #menu-background-pattern {
+    background-position: 0 calc(-35% * (var(--active-index, 0) + 1));
 }
 
 #menu-background-image {
@@ -90,18 +78,6 @@ body {
 
 }
 
-#menu[data-active-index="0"] > #menu-background-image {
-    background-position: center 30%;
-}
-
-#menu[data-active-index="1"] > #menu-background-image {
-    background-position: center 55%
-}
-
-#menu[data-active-index="2"] > #menu-background-image {
-    background-position: center 70%
-}
-
-#menu[data-active-index="3"] > #menu-background-image {
-    background-position: center 85%
+#menu > #menu-background-image {
+    background-position: center calc(30% + (15% * (var(--active-index, 0) + 1)));
 }

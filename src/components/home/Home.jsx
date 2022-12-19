@@ -8,7 +8,7 @@ const setOnMouseOverIndex = (menu) => {
             console.log(item)
             console.log(index)
             item.onmouseover = () => {
-                menu.dataset.activeIndex = String(index);
+                menu.style.setProperty("--active-index", index);
             }
         })
 }
