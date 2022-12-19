@@ -19,9 +19,9 @@ export default function Ingredients({queryPrefix, data}) {
     const [ingredients, setIngredients] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    let results;
 
     const updateIngredientContainer = useCallback(async () => {
+        let results;
         try {
             setIsLoading(true);
             results = await ingredientApi.getIngredients(paramsQuery(queryPrefix, data));
@@ -30,7 +30,7 @@ export default function Ingredients({queryPrefix, data}) {
             console.log("errorstate:" + err);
         } finally {
             setIsLoading(false);
-            setIngredients(results);
+            if (!error) setIngredients(results);
         }
     }, [data, queryPrefix]);
 

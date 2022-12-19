@@ -35,7 +35,7 @@ export function Home() {
                          to="/resources/locations" replace>Locations</NavLink>
                 <NavLink key={"4"} id={"1"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
                          as={NavLink}
-                         to="/account/" replace>Ingredients</NavLink>
+                         to="/account/" replace>Login/Register</NavLink>
             </div>
             <div id="menu-background-pattern"></div>
             <div id="menu-background-image"></div>
