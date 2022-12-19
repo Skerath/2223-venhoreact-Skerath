@@ -25,12 +25,12 @@ export default function Ingredients({queryPrefix, data}) {
         try {
             setIsLoading(true);
             results = await ingredientApi.getIngredients(paramsQuery(queryPrefix, data));
+            setIngredients(results);
         } catch (err) {
             setError(err);
             console.log("errorstate:" + err);
         } finally {
             setIsLoading(false);
-            if (!error) setIngredients(results);
         }
     }, [data, queryPrefix]);
 
