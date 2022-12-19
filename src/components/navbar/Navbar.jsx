@@ -40,7 +40,7 @@ export default function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div id="navbar-brand">
-                    <NavLink className="navbar-brand" as={NavLink} to="/" replace>Wynngman</NavLink>
+                    <NavLink className="navbar-brand" as={NavLink} to="/" replace>Venho</NavLink>
                 </div>
                 <div className="navbar-collapse collapse" id="main_nav">
                     <ul className="navbar-nav mr-auto">

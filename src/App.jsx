@@ -1,7 +1,9 @@
 import {Route, Routes} from "react-router";
-import {HomePage, IngredientsPage, Locations} from "./pages";
+import {HomePage, IngredientsPage} from "./pages";
 import Navbar from "./components/navbar/Navbar";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import {PageNotFound} from "./components/pageNotFound/PageNotFound";
+import {Footer} from "./components/footer/Footer";
 
 function App() {
     return (
@@ -13,73 +15,39 @@ function App() {
                         <HomePage/>
                     </>
                 }/>
-
-                <Route path="items">
-                    <Route index element={
-                        <>
-                            <Navbar/>
-                            <p>Not implemented yet.</p>
-                        </>
-                    }/>
-
-                </Route>
-                {/*TODO implement*/}
-                <Route path="locations" element={
-                    <>
-                        <Navbar/>
-                        <Locations/>
-                    </>
-                }/>
                 <Route path="resources">
                     <Route path="ingredients" element={
                         <>
                             <Navbar/>
                             <IngredientsPage/>
+                            <Footer/>
                         </>
                     }/>
                     {/*TODO implement*/}
-                    <Route path="resources" element={
+                    <Route path="locations" element={
                         <>
                             <Navbar/>
                             <p>Not implemented yet.</p>
+                            <Footer/>
                         </>
                     }/>
-                    {/*TODO implement*/}
-                    <Route path="powders" element={
-                        <>
-                            <Navbar/>
-                            <p>Not implemented yet.</p>
-                        </>
-                    }/>
-                    {/*TODO implement*/}
-                    <Route path="potions" element={
-                        <>
-                            <Navbar/>
-                            <p>Not implemented yet.</p>
-                        </>
-                    }/>
-                </Route>
-                <Route path="items">
-                    {/*TODO implement*/}
-                    <Route path="items" element={
-                        <>
-                            <Navbar/>
-                            <p>Not implemented yet.</p>
-                        </>
-                    }/>
-                    {/*TODO implement*/}
                     <Route path="custom-items" element={
                         <>
                             <Navbar/>
                             <p>Not implemented yet.</p>
+                            <Footer/>
                         </>
                     }/>
+                    }/>
                 </Route>
-                {/*TODO proper page not found page*/}
+                <Route path="resources">
+
+                </Route>
                 <Route path="*" element={
                     <>
                         <Navbar/>
-                        <p>Page not found.</p>
+                        <PageNotFound/>
+                        <Footer/>
                     </>
                 }/>
             </Routes>
