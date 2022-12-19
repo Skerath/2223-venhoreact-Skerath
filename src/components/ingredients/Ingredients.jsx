@@ -24,6 +24,7 @@ export default function Ingredients({queryPrefix, data}) {
         let results;
         try {
             setIsLoading(true);
+            setError(false);
             results = await ingredientApi.getIngredients(paramsQuery(queryPrefix, data));
             setIngredients(results);
         } catch (err) {
