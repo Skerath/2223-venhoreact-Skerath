@@ -17,7 +17,6 @@ const paramsQuery = (queryPrefix, data) => {
 export default function Ingredients({queryPrefix, data}) {
 
     const [ingredients, setIngredients] = useState([]);
-    //TODO implement loading, alert
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     let results;
