@@ -26,19 +26,19 @@ export function Home() {
             <div id="menu-items">
                 <NavLink key={"1"} id={"1"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
                          as={NavLink}
-                         to="/resources/ingredients" replace>Ingredients</NavLink>
-                <NavLink key={"2"} id={"1"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
+                         to="/ingredients" replace>Ingredients</NavLink>
+                <NavLink key={"2"} id={"2"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
                          as={NavLink}
-                         to="/resources/custom-items" replace>Custom Items</NavLink>
-                <NavLink key={"3"} id={"1"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
+                         to="/items" replace>Items</NavLink>
+                <NavLink key={"3"} id={"3"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
                          as={NavLink}
-                         to="/resources/locations" replace>Locations</NavLink>
-                <NavLink key={"4"} id={"1"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
+                         to="/items/new" replace>Create Item</NavLink>
+                <NavLink key={"4"} id={"4"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
                          as={NavLink}
-                         to="/account/" replace>Login/Register</NavLink>
+                         to="/account" replace>Login/Register</NavLink>
             </div>
             <div id="menu-background-pattern"></div>
             <div id="menu-background-image"></div>
         </div>
-    )
+    );
 }

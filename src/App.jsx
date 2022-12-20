@@ -15,34 +15,31 @@ function App() {
                         <HomePage/>
                     </>
                 }/>
-                <Route path="resources">
-                    <Route path="ingredients" element={
-                        <>
-                            <Navbar/>
-                            <IngredientsPage/>
-                            <Footer/>
-                        </>
-                    }/>
-                    {/*TODO implement*/}
-                    <Route path="locations" element={
-                        <>
-                            <Navbar/>
-                            <p>Not implemented yet.</p>
-                            <Footer/>
-                        </>
-                    }/>
-                    <Route path="custom-items" element={
+                <Route path="ingredients" element={
+                    <>
+                        <Navbar/>
+                        <IngredientsPage/>
+                        <Footer/>
+                    </>
+                }/>
+                <Route path="items">
+                    <Route path="" element={
                         <>
                             <Navbar/>
                             <p>Not implemented yet.</p>
                             <Footer/>
                         </>
                     }/>
+                    }/>
+                    <Route path="new" element={
+                        <>
+                            <Navbar/>
+                            <p>Not implemented yet.</p>
+                            <Footer/>
+                        </>
                     }/>
                 </Route>
-                <Route path="resources">
 
-                </Route>
                 <Route path="*" element={
                     <>
                         <Navbar/>

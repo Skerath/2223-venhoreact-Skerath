@@ -1,4 +1,3 @@
-import Location from "./components/locations/Location";
 import Filter from "./components/filter/Filter";
 import {useState} from "react";
 import INGREDIENTS_FILTER_LAYOUT from "./components/filter/filter-layout";
@@ -28,10 +27,3 @@ export const IngredientsPage = () => {
         </main>
     );
 };
-
-
-export const Locations = () => {
-    return (<>
-        <Location/>
-    </>);
-}
