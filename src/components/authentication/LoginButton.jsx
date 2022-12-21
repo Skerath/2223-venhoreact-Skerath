@@ -16,8 +16,9 @@ function LoginButton() {
             type="button"
             className="nav-link btn"
             onClick={handleLogin}
+            style={{margin:"auto"}}
         >
-            Log In
+            Log in
         </button>
     );
 }

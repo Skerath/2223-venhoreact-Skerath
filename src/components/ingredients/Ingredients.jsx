@@ -28,6 +28,7 @@ export default function Ingredients({queryPrefix, data}) {
             results = await ingredientApi.getAllIngredients(paramsQuery(queryPrefix, data));
             setIngredients(results);
         } catch (err) {
+            // TODO if error === 403 unauthorized => setError
             if (err.request && err.request.status === 404)
                 setIngredients([]);
             else

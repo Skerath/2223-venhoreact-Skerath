@@ -10,7 +10,7 @@ function MyAuth0Provider({children}) {
             domain={domain}
             audience={audience}
             clientId={clientId}
-            redirectUri={`${window.location.origin}/`}
+            redirectUri={`${window.location.origin}/login`}
             cacheLocation="localstorage"
             useRefreshTokens
         >

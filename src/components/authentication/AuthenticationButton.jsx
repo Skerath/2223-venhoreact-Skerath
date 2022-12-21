@@ -13,11 +13,12 @@ export default function AuthenticationButton() {
         return (
             <>
 
-                <li className="nav-item">
+                <li className="nav-item" style={{margin: "auto"}}>
                     <LogoutButton/>
                 </li>
                 <li className="nav-item">
-                    <img style={{maxHeight: "40px"}} src={picture} alt={givenName} className="rounded"/>
+                    <img style={{maxHeight: "45px", margin: "auto", borderRadius: "50%"}} src={picture} alt={givenName}
+                         className="nav-link"/>
                 </li>
             </>
         );

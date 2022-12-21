@@ -47,34 +47,17 @@ export default function Navbar() {
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
                         </li>
-                        <li className="nav-item">
+                        <li className="nav-item" style={{margin: "auto"}}>
                             <NavLink className="nav-link" as={NavLink} to="/ingredients" replace>
                                 Ingredients
                             </NavLink>
                         </li>
-                        {/*<li className="nav-item dropdown">*/}
-                        {/*    <NavLink className="nav-link dropdown-toggle" as={NavLink} to="#" id="resourcesDropdown"*/}
-                        {/*             role="button"*/}
-                        {/*             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" replace>*/}
-                        {/*        Resources*/}
-                        {/*    </NavLink>*/}
-                        {/*    <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="resourcesDropdown">*/}
-                        {/*        <NavLink className="dropdown-item" as={NavLink}*/}
-                        {/*                 to="ingredients" replace>Ingredients</NavLink>*/}
-                        {/*        <NavLink className="dropdown-item" as={NavLink}*/}
-                        {/*                 to="materials" replace>Materials</NavLink>*/}
-                        {/*        <NavLink className="dropdown-item" as={NavLink}*/}
-                        {/*                 to="powders" replace>Powders</NavLink>*/}
-                        {/*        <NavLink className="dropdown-item" as={NavLink}*/}
-                        {/*                 to="potions" replace>Potions</NavLink>*/}
-                        {/*    </div>*/}
-                        {/*</li>*/}
-                        <li className="nav-item">
+                        <li className="nav-item" style={{margin: "auto"}}>
                             <NavLink className="nav-link" as={NavLink} to="/items" replace>
                                 Items
                             </NavLink>
                         </li>
-                        <li className="nav-item">
+                        <li className="nav-item" style={{margin: "auto"}}>
                             <NavLink className="nav-link" as={NavLink} to="/items/create" replace>
                                 Create Item
                             </NavLink>

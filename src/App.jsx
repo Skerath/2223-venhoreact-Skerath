@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/Navbar";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import {PageNotFound} from "./components/pageNotFound/PageNotFound";
 import {Footer} from "./components/footer/Footer";
+import AuthLanding from "./components/authentication/AuthLanding";
 
 function App() {
     return (
@@ -39,7 +40,13 @@ function App() {
                         </>
                     }/>
                 </Route>
-
+                <Route path="login" element={
+                    <>
+                        <Navbar/>
+                        <AuthLanding/>
+                        <Footer/>
+                    </>
+                }/>
                 <Route path="*" element={
                     <>
                         <Navbar/>
