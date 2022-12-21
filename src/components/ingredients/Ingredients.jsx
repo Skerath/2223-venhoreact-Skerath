@@ -1,6 +1,6 @@
 import IngredientCard from "./IngredientCard";
 import {useCallback, useEffect, useState} from "react";
-import * as ingredientApi from "../../api/ingredientService";
+import useIngredients from '../../api/ingredientService';
 import {Error} from "../alert/Error";
 import {Message} from "../alert/Message";
 import Loader from "../Loader/Loader";
@@ -15,10 +15,10 @@ const paramsQuery = (queryPrefix, data) => {
 };
 
 export default function Ingredients({queryPrefix, data}) {
-
     const [ingredients, setIngredients] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const ingredientApi = useIngredients();
 
     const updateIngredientContainer = useCallback(async () => {
         let results;
@@ -28,7 +28,7 @@ export default function Ingredients({queryPrefix, data}) {
             results = await ingredientApi.getAllIngredients(paramsQuery(queryPrefix, data));
             setIngredients(results);
         } catch (err) {
-            if (err.request.status === 404)
+            if (err.request && err.request.status === 404)
                 setIngredients([]);
             else
                 setError(err);

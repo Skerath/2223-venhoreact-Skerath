@@ -1,11 +1,34 @@
+import {
+    useAuth0,
+} from '@auth0/auth0-react';
 import axios from 'axios';
+import {
+    useCallback,
+} from 'react';
 
 const baseUrl = `${process.env.REACT_APP_API_URL}/ingredients/?`;
 
-export const getAllIngredients = async (paramsQuery) => {
+const useIngredients = () => {
     const {
-        data
-    } = await axios.get(baseUrl + paramsQuery);
+        getAccessTokenSilently,
+    } = useAuth0();
 
-    return data;
-};
+
+    const getAllIngredients = useCallback(async (paramsQuery) => {
+        const token = await getAccessTokenSilently();
+        const {
+            data
+        } = await axios.get(baseUrl + paramsQuery, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return data;
+    }, [getAccessTokenSilently]);
+
+    return {
+        getAllIngredients,
+    }
+}
+
+export default useIngredients;
