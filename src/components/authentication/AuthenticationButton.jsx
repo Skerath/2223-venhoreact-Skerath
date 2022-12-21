@@ -2,7 +2,7 @@ import {useAuth0} from '@auth0/auth0-react';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 
-export default function AuthenticationButton() {
+export default function AuthenticationButton({type, stylingOptions}) {
     const {
         isAuthenticated,
         user,
@@ -13,16 +13,19 @@ export default function AuthenticationButton() {
         return (
             <>
 
-                <li className="nav-item" style={{margin: "auto"}}>
-                    <LogoutButton/>
+                <li className={type ? type : "nav-item"} style={{margin: "auto"}}>
+                    <LogoutButton type={type ? type : "nav-link"}
+                                  stylingOptions={stylingOptions ? stylingOptions : {margin: "auto"}}/>
                 </li>
-                <li className="nav-item">
+                {type ? null : <li className="nav-item">
                     <img style={{maxHeight: "45px", margin: "auto", borderRadius: "50%"}} src={picture} alt={givenName}
                          className="nav-link"/>
-                </li>
+                </li>}
+
             </>
         );
     }
 
-    return <LoginButton/>;
+    return <LoginButton type={type ? type : "nav-link"}
+                        stylingOptions={stylingOptions ? stylingOptions : {margin: "auto"}}/>;
 }

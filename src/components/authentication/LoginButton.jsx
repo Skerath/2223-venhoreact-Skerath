@@ -1,7 +1,7 @@
 import {useAuth0} from '@auth0/auth0-react';
 import {useCallback} from 'react';
 
-function LoginButton() {
+function LoginButton({type, stylingOptions}) {
     const {loginWithRedirect} = useAuth0();
 
     const handleLogin = useCallback(
@@ -14,9 +14,9 @@ function LoginButton() {
     return (
         <button
             type="button"
-            className="nav-link btn"
+            className={`${type} btn`}
             onClick={handleLogin}
-            style={{margin:"auto"}}
+            style={stylingOptions ? stylingOptions : {margin:"auto"}}
         >
             Log in
         </button>

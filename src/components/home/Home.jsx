@@ -1,6 +1,7 @@
 import "./Home.css";
 import {NavLink} from "react-router-dom";
 import {useEffect} from "react";
+import AuthenticationButton from "../authentication/AuthenticationButton";
 
 const setOnMouseOverIndex = (menu) => {
     Array.from(document.getElementsByClassName("menu-item"))
@@ -13,7 +14,6 @@ const setOnMouseOverIndex = (menu) => {
 
 
 export function Home() {
-
     useEffect(() => {
         const menu = document.getElementById("menu");
         setOnMouseOverIndex(menu);
@@ -31,9 +31,7 @@ export function Home() {
                 <NavLink key={"3"} id={"3"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
                          as={NavLink}
                          to="/items/new" replace>Create Item</NavLink>
-                <NavLink key={"4"} id={"4"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
-                         as={NavLink}
-                         to="/account" replace>Login/Register</NavLink>
+                <AuthenticationButton type={"menu-item"} stylingOptions={{textDecoration: "none", color: "inherit"}}/>
             </div>
             <div id="menu-background-pattern"></div>
             <div id="menu-background-image"></div>
