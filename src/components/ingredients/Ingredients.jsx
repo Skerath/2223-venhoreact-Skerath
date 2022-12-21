@@ -28,11 +28,14 @@ export default function Ingredients({queryPrefix, data}) {
             results = await ingredientApi.getAllIngredients(paramsQuery(queryPrefix, data));
             setIngredients(results);
         } catch (err) {
-            // TODO if error === 403 unauthorized => setError
-            if (err.request && err.request.status === 404)
-                setIngredients([]);
-            else
-                setError(err);
+            if (err.request) {
+                if (err.request.status === 404)
+                    setIngredients([]);
+                if (err.request.status === 403)
+                    setError("User is not allowed to view Venho's ingredients.");
+                else setError(err)
+            } else
+                setError(err)
         } finally {
             setIsLoading(false);
         }
