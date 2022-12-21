@@ -92,8 +92,8 @@ export default memo(function IngredientCard(props) {
     } = props;
 
     return (
-        <div className="card fadeIn bg-dark">
-            <div className="card-header" style={{height: "10rem"}}>
+        <div key={resourceID} className="card fadeIn bg-dark">
+            <div className="card-header" style={{height: "12rem"}}>
                 <div className="w-100">
                     {stars(tier)}
                 </div>
@@ -105,7 +105,7 @@ export default memo(function IngredientCard(props) {
                 {requirementsTable(requirements)}
             </div>
             <div className="card-footer py-3 px-0">
-                <h6 className="mb-0">{professions.map((profession, i) => {
+                <h6 className="mb-0">{professions.map((profession) => {
                     return beautifyText(profession);
                 }).join(", ")}</h6>
             </div>

@@ -1,4 +1,4 @@
-const INGREDIENTS_FILTER_LAYOUT = [{
+export const INGREDIENTS_FILTER_LAYOUT = [{
     stylingOptions: {width: "15rem"}, filterObjects: [{
         displayName: "Name", inputType: "text", ref: {},
     }]
@@ -38,5 +38,53 @@ const INGREDIENTS_FILTER_LAYOUT = [{
     },]
 }];
 
-
-export default INGREDIENTS_FILTER_LAYOUT;
+export const ITEM_FILTER_LAYOUT = [{
+    stylingOptions: {width: "15rem"}, filterObjects: [{
+        displayName: "Name", inputType: "text", ref: {},
+    }]
+}, {
+    stylingOptions: {width: "15rem"}, filterObjects: [{
+        displayName: "Ingredient", inputType: "text", ref: {},
+    }]
+}, {
+    stylingOptions: {width: "15rem"}, filterObjects: [{
+        displayName: "Owner", inputType: "text", ref: {},
+    },]
+}, {
+    stylingOptions: {width: "15rem"}, filterObjects: [{
+        displayName: "Type", selectOptions: [
+            {
+                selected: true, value: "", displayName: "Any",
+            }, {
+                value: "helmet", displayName: "Helmet",
+            }, {
+                value: "chestplate", displayName: "Chestplate",
+            }, {
+                value: "leggings", displayName: "Leggings",
+            }, {
+                value: "boots", displayName: "Boots",
+            }, {
+                value: "spear", displayName: "Spear",
+            }, {
+                value: "dagger", displayName: "Dagger",
+            }, {
+                value: "bow", displayName: "Bow",
+            }, {
+                value: "wand", displayName: "Wand",
+            }, {
+                value: "relik", displayName: "Relik",
+            }, {
+                value: "ring", displayName: "Ring",
+            }, {
+                value: "bracelet", displayName: "Bracelet",
+            }, {
+                value: "necklace", displayName: "Necklace",
+            }, {
+                value: "potion", displayName: "Potion",
+            }, {
+                value: "scrolls", displayName: "Scrolls",
+            }, {
+                value: "food", displayName: "Food",
+            },]
+    },]
+},];
