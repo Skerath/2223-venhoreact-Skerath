@@ -2,6 +2,7 @@ import './Navbar.css';
 import {NavLink} from "react-router-dom";
 import {useEffect} from 'react';
 import {useMediaQuery} from 'react-responsive';
+import AuthenticationButton from "../authentication/AuthenticationButton";
 
 let isMobile;
 
@@ -78,11 +79,7 @@ export default function Navbar() {
                                 Create Item
                             </NavLink>
                         </li>
-                        <li className="nav-item ms-4">
-                            <NavLink className="nav-link" as={NavLink} to="/account" replace>
-                                Account
-                            </NavLink>
-                        </li>
+                        <AuthenticationButton/>
                     </ul>
                 </div>
             </nav>

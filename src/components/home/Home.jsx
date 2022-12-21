@@ -5,8 +5,6 @@ import {useEffect} from "react";
 const setOnMouseOverIndex = (menu) => {
     Array.from(document.getElementsByClassName("menu-item"))
         .forEach((item, index) => {
-            console.log(item)
-            console.log(index)
             item.onmouseover = () => {
                 menu.style.setProperty("--active-index", index);
             }

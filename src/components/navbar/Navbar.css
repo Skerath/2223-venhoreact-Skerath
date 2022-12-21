@@ -19,3 +19,8 @@ header {
 .navbar-toggler, #navbar-brand {
     margin: 0.25rem;
 }
+
+.nav-item {
+    margin-left: 5px;
+    margin-right: 5px;
+}
