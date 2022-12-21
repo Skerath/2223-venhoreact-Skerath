@@ -5,6 +5,7 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import {PageNotFound} from "./components/pageNotFound/PageNotFound";
 import {Footer} from "./components/footer/Footer";
 import AuthLanding from "./components/authentication/AuthLanding";
+import RequireAuth from "./components/authentication/RequireAuth";
 
 function App() {
     return (
@@ -17,27 +18,27 @@ function App() {
                     </>
                 }/>
                 <Route path="ingredients" element={
-                    <>
+                    <RequireAuth>
                         <Navbar/>
                         <IngredientsPage/>
                         <Footer/>
-                    </>
+                    </RequireAuth>
                 }/>
                 <Route path="items">
                     <Route path="" element={
-                        <>
+                        <RequireAuth>
                             <Navbar/>
                             <p>Not implemented yet.</p>
                             <Footer/>
-                        </>
+                        </RequireAuth>
                     }/>
                     }/>
                     <Route path="new" element={
-                        <>
+                        <RequireAuth>
                             <Navbar/>
                             <p>Not implemented yet.</p>
                             <Footer/>
-                        </>
+                        </RequireAuth>
                     }/>
                 </Route>
                 <Route path="login" element={

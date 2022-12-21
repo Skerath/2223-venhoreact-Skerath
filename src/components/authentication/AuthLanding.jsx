@@ -13,7 +13,7 @@ export default function AuthLanding() {
                 <Message message={"Sorry, we were unable to sign you in, the error below might be useful."}
                          style={{marginLeft: "15vw", marginRight: "15vw", marginTop: "20vh", marginBottom: "50vh"}}/>
                 <Error error={error}/>
-                <LoginButton/>
+                <LoginButton type={"nav-link"}/>
             </div>
         </div>
     </div>);
@@ -22,8 +22,8 @@ export default function AuthLanding() {
 
     if (!isLoading && !isAuthenticated) return (<>
         <Message message={"You need to login to access this page."}
-                 style={{marginLeft: "15vw", marginRight: "15vw", marginTop: "20vh", marginBottom: "50vh"}}>
-            <LoginButton/>
+                 styling={{marginLeft: "15vw", marginRight: "15vw", marginTop: "20vh", marginBottom: "50vh"}}>
+            <LoginButton type={"nav-link"}/>
         </Message>
     </>);
 
