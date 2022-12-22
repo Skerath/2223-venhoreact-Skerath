@@ -51,7 +51,7 @@ const useItems = () => {
 
     const editItem = async (values) => {
         const token = await getAccessTokenSilently();
-        const result = await axios.put(baseUrl, null, {
+        return await axios.put(baseUrl, null, {
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -62,8 +62,6 @@ const useItems = () => {
                 ingredient: values.ingredient,
             }
         });
-
-        return result;
     };
 
 

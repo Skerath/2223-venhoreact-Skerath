@@ -150,10 +150,6 @@ export const NewItemForm = () => {
                                                   onBlur={handleBlur}
                                                   isValid={touched.ingredient && !errors.ingredient}/>
                                     <Form.Control.Feedback type="invalid">{errors.ingredient}</Form.Control.Feedback>
-                                    <Form.Control.Feedback type="valid">
-                                        This form being green does not mean the Ingredient is found! Please double check
-                                        before submitting.
-                                    </Form.Control.Feedback>
                                     <Form.Text className="text-muted">
                                         Make sure the ingredient is spelled correctly and is usable for the selected
                                         item type

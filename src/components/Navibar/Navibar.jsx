@@ -8,7 +8,7 @@ import Nav from "react-bootstrap/Nav";
 export default function Navibar() {
     return (
         <header style={{paddingBottom: "1rem"}}>
-            <Navbar style={{padding: 0}} bg="dark" variant="dark" expand="lg">
+            <Navbar  bg="dark" variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand as={NavLink} to="/" replace>Venho</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>

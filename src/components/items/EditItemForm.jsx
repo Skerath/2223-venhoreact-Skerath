@@ -32,7 +32,8 @@ export const EditItemForm = ({currentValues, wantsClosed, wantsUpdate}) => {
     const closeSuccessToast = () => setResult(false);
 
     return (
-        <ToastContainer className="p-3 toastCard fadeIn position-fixed" position="middle-center" style={{width: "50rem"}}>
+        <ToastContainer className="p-3 toastCard fadeIn position-fixed" position="middle-center"
+                        style={{width: "50rem"}}>
             <Toast bg="secondary" onClose={wantsClosed} style={{width: "50rem"}}>
                 {error ?
                     <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
@@ -74,11 +75,11 @@ export const EditItemForm = ({currentValues, wantsClosed, wantsUpdate}) => {
                             } catch (err) {
                                 if (err.request) {
                                     if (err.request.status === 0)
-                                        setError({message: "API seems to be offline."});
+                                        setError("API seems to be offline.");
                                     else if (err.request.status === 403)
-                                        setError({message: "You're not allowed to edit items!"});
+                                        setError("You're not allowed to edit items!");
                                     else setError(err.response.data.details[0].message || JSON.stringify(err));
-                                } else setError(err.response.data.details[0].message || JSON.stringify(err));
+                                } else setError(JSON.stringify(err));
                             } finally {
                                 if (result && result.status === 204) {
                                     setResult(`Item with name "${previousName}" has been updated! Refreshing page in 5 seconds.`);
