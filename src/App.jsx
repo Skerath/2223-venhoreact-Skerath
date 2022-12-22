@@ -5,7 +5,7 @@ import {PageNotFound} from "./components/pageNotFound/PageNotFound";
 import {Footer} from "./components/footer/Footer";
 import AuthLanding from "./components/authentication/AuthLanding";
 import RequireAuth from "./components/authentication/RequireAuth";
-import Navibar from "./components/navbar/Navibar";
+import Navibar from "./components/Navibar/Navibar";
 
 function App() {
     return (

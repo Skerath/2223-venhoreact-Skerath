@@ -1,7 +1,7 @@
 import {useAuth0} from '@auth0/auth0-react';
 import {useCallback} from 'react';
 
-function AuthenticationHomeLoginButton() {
+function HomeLoginButton() {
     const {loginWithRedirect} = useAuth0();
 
     const handleLogin = useCallback(
@@ -23,4 +23,4 @@ function AuthenticationHomeLoginButton() {
     );
 }
 
-export default AuthenticationHomeLoginButton;
+export default HomeLoginButton;

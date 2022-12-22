@@ -2,8 +2,8 @@ import "./Home.css";
 import {NavLink} from "react-router-dom";
 import {useEffect} from "react";
 import {useAuth0} from "@auth0/auth0-react";
-import AuthenticationHomeLogoutButton from "./AuthenticationHomeLogoutButton";
-import AuthenticationHomeLoginButton from "./AuthenticationHomeLoginButton";
+import HomeLogoutButton from "./HomeLogoutButton";
+import HomeLoginButton from "./HomeLoginButton";
 
 const setOnMouseOverIndex = (menu) => {
     Array.from(document.getElementsByClassName("menu-item"))
@@ -37,7 +37,7 @@ export function Home() {
                 <NavLink key={"3"} id={"3"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
                          as={NavLink}
                          to="/items/create" replace>Create Item</NavLink>
-                {isAuthenticated ? <AuthenticationHomeLogoutButton/> : <AuthenticationHomeLoginButton/>}
+                {isAuthenticated ? <HomeLogoutButton/> : <HomeLoginButton/>}
             </div>
             <div id="menu-background-pattern"></div>
             <div id="menu-background-image"></div>

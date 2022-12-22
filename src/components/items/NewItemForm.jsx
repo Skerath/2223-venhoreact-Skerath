@@ -19,6 +19,7 @@ export const NewItemForm = () => {
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
     const itemService = useItems();
+
     const closeErrorToast = () => setError(false);
     const closeSuccessToast = () => setResult(false);
 

@@ -1,6 +1,6 @@
 import {useAuth0} from '@auth0/auth0-react';
 
-function AuthenticationHomeLogoutButton() {
+function HomeLogoutButton() {
     const {logout} = useAuth0();
     return (
         <button id="4"
@@ -15,4 +15,4 @@ function AuthenticationHomeLogoutButton() {
     );
 }
 
-export default AuthenticationHomeLogoutButton;
+export default HomeLogoutButton;
