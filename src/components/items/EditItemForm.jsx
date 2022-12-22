@@ -1,6 +1,5 @@
 import useItems from "../../api/itemService";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Toast from "react-bootstrap/Toast";
@@ -19,71 +18,78 @@ const validationSchema = yup.object().shape({
         .required("Ingredient name is required"),
 });
 
-export const EditItemForm = ({currentValues}) => {
+export const EditItemForm = ({currentValues, wantsClosed, wantsUpdate}) => {
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
     const itemService = useItems();
+
+    const itemId = currentValues.itemId;
+    const previousName = currentValues.name;
+    const previousType = currentValues.itemType;
+    const previousIngredient = currentValues.ingredientUsed.name;
 
     const closeErrorToast = () => setError(false);
     const closeSuccessToast = () => setResult(false);
 
     return (
-        <>
-            {error ?
-                <ToastContainer className="p-3" position='bottom-center'>
-                    <Toast bg="danger" onClose={closeErrorToast}>
-                        <Toast.Header closeButton={true}>
-                            <strong className="me-auto">Venho</strong>
-                            <small>An error occured while submitting item</small>
-                        </Toast.Header>
-                        <Toast.Body>{error}</Toast.Body>
-                    </Toast>
-                </ToastContainer> : null}
-            {result ?
-                <ToastContainer className="p-3" position='bottom-center'>
-                    <Toast bg="success" onClose={closeSuccessToast}>
-                        <Toast.Header closeButton={true}>
-                            <strong className="me-auto">Venho</strong>
-                            <small>An error occured while submitting item</small>
-                        </Toast.Header>
-                        <Toast.Body>{result}</Toast.Body>
-                    </Toast>
-                </ToastContainer> : null}
-            <Card bg="dark" style={{width: "50rem", marginTop: "10vh", marginBottom: "10vh"}}>
-                <Card.Header className={"h2"}>Submit new item
-                </Card.Header>
-                <Card.Body>
+        <ToastContainer className="p-3 toastCard fadeIn position-fixed" position="middle-center" style={{width: "50rem"}}>
+            <Toast bg="secondary" onClose={wantsClosed} style={{width: "50rem"}}>
+                {error ?
+                    <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
+                        <Toast bg="danger" onClose={closeErrorToast}>
+                            <Toast.Header closeButton={true}>
+                                <strong className="me-auto">Venho</strong>
+                                <small>An error occurred while editing item</small>
+                            </Toast.Header>
+                            <Toast.Body>{error}</Toast.Body>
+                        </Toast>
+                    </ToastContainer> : null
+                }
+                {result ?
+                    <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
+                        <Toast bg="success" onClose={closeSuccessToast}>
+                            <Toast.Header closeButton={true}>
+                                <strong className="me-auto">Venho</strong>
+                                <small>Update sucessful</small>
+                            </Toast.Header>
+                            <Toast.Body>{result}</Toast.Body>
+                        </Toast>
+                    </ToastContainer> : null
+                }
+                <Toast.Header closeButton={true}>
+                    <strong className="me-auto">Venho</strong>
+                </Toast.Header>
+                <Toast.Body className="">
+                    <h2>Edit "{previousName}"</h2>
+                    <hr/>
                     <Formik
                         validationSchema={validationSchema}
                         onSubmit={async (values, {setSubmitting, resetForm}) => {
-                            let result, hasError
+                            let result
                             try {
                                 setResult(null);
                                 setError(false);
                                 setSubmitting(true)
-                                result = await itemService.createItem(values)
+                                result = await itemService.editItem({itemId, ...values})
                             } catch (err) {
-                                console.log(JSON.stringify(err));
-                                console.log(err);
-                                hasError = err
                                 if (err.request) {
                                     if (err.request.status === 0)
-                                        setError("API seems to be offline.");
+                                        setError({message: "API seems to be offline."});
                                     else if (err.request.status === 403)
-                                        setError("You're not allowed to submit new items!");
+                                        setError({message: "You're not allowed to edit items!"});
                                     else setError(err.response.data.details[0].message || JSON.stringify(err));
                                 } else setError(err.response.data.details[0].message || JSON.stringify(err));
                             } finally {
-                                if (result && result.status === 201)
-                                    setResult(`Item with name ${values.name} submitted!`);
-                                if (!hasError)
-                                    resetForm();
+                                if (result && result.status === 204) {
+                                    setResult(`Item with name "${previousName}" has been updated! Refreshing page in 5 seconds.`);
+                                    // setTimeout(wantsUpdate, 5000);
+                                }
                             }
                         }}
                         initialValues={{
-                            name: '',
-                            type: '',
-                            ingredient: '',
+                            name: `${previousName}`,
+                            type: `${previousType}`,
+                            ingredient: `${previousIngredient}`,
                         }}
                     >
                         {({
@@ -107,9 +113,6 @@ export const EditItemForm = ({currentValues}) => {
                                                   onBlur={handleBlur}
                                                   isValid={touched.name && !errors.name}/>
                                     <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
-                                    <Form.Text className="text-muted">
-                                        Try to follow the guild's naming scheme: "Usecase - Area"
-                                    </Form.Text>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formType">
                                     <Form.Label>Item Type</Form.Label>
@@ -149,12 +152,9 @@ export const EditItemForm = ({currentValues}) => {
                                                   onChange={handleChange}
                                                   onBlur={handleBlur}
                                                   isValid={touched.ingredient && !errors.ingredient}/>
-                                    <Form.Control.Feedback type="invalid">{errors.ingredient}</Form.Control.Feedback>
-                                    <Form.Control.Feedback type="valid">
-                                        This form being green does not mean the Ingredient is found! Please double check
-                                        before submitting.
-                                    </Form.Control.Feedback>
-                                    <Form.Text className="text-muted">
+                                    <Form.Control.Feedback
+                                        type="invalid">{errors.ingredient}</Form.Control.Feedback>
+                                    <Form.Text>
                                         Make sure the ingredient is spelled correctly and is usable for the selected
                                         item type
                                     </Form.Text>
@@ -165,8 +165,8 @@ export const EditItemForm = ({currentValues}) => {
                             </Form>
                         )}
                     </Formik>
-                </Card.Body>
-            </Card>
-        </>
+                </Toast.Body>
+            </Toast>
+        </ToastContainer>
     );
 };

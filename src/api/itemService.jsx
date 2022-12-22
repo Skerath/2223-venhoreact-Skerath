@@ -23,7 +23,6 @@ const useItems = () => {
     }, [getAccessTokenSilently]);
 
     const getItemById = useCallback(async (id) => {
-        console.log(id);
         const token = await getAccessTokenSilently();
         const {
             data
@@ -38,7 +37,7 @@ const useItems = () => {
 
     const createItem = async (values) => {
         const token = await getAccessTokenSilently();
-        return await axios.put(baseUrl, null, {
+        return await axios.post(baseUrl, null, {
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -50,9 +49,28 @@ const useItems = () => {
         });
     };
 
+    const editItem = async (values) => {
+        const token = await getAccessTokenSilently();
+        const result = await axios.put(baseUrl, null, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            params: {
+                id: values.itemId,
+                name: values.name,
+                type: values.type,
+                ingredient: values.ingredient,
+            }
+        });
+
+        return result;
+    };
+
+
     return {
         getItemsByQuery,
         createItem,
+        editItem,
         getItemById,
     };
 }

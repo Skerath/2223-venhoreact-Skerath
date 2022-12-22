@@ -34,7 +34,7 @@ export const NewItemForm = () => {
                     <Toast bg="danger" onClose={closeErrorToast}>
                         <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>
-                            <small>An error occured while submitting item</small>
+                            <small>An error occurred while submitting item</small>
                         </Toast.Header>
                         <Toast.Body>{error}</Toast.Body>
                     </Toast>
@@ -44,7 +44,7 @@ export const NewItemForm = () => {
                     <Toast bg="success" onClose={closeSuccessToast}>
                         <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>
-                            <small>An error occured while submitting item</small>
+                            <small>Submission successful</small>
                         </Toast.Header>
                         <Toast.Body>{result}</Toast.Body>
                     </Toast>

@@ -52,7 +52,7 @@ export default function Items({queryPrefix, data}) {
             <Loader loading={isLoading}/>
             {!isLoading ? <Error error={error}/> : null}
             {!error && !isLoading ? <div className="card-groups">
-                {items.map(item => <ItemCard id={1} key={item.itemId} {...item}/>)}
+                {items.map(item => <ItemCard id={1} key={item.itemId} props={item}/>)}
                 {items.length === 0 && !isLoading ?
                     <Message message={"There were no results matching your query."}/> : null}
             </div> : null}
