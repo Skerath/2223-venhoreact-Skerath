@@ -1,7 +1,7 @@
 import {useAuth0} from '@auth0/auth0-react';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
-import {Image} from "react-bootstrap";
+import Image from "react-bootstrap/Image";
 
 export default function AuthenticationButton() {
     const {

@@ -1,6 +1,7 @@
 import {useDebouncedCallback} from 'use-debounce';
 import {Error} from "../alert/Error";
-import {FormControl, FormFloating} from "react-bootstrap";
+import FormControl from "react-bootstrap/FormControl";
+import FormFloating from "react-bootstrap/FormFloating";
 
 const possibleInputTypes = ["text", "number"];
 const validateInputType = (filterObject) => {

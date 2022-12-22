@@ -1,9 +1,8 @@
-import './Filter.css';
 import FilterInput from "./FilterInput";
 import FilterSelect from "./FilterSelect";
 import {useRef} from "react";
 import {Error} from "../alert/Error";
-import {InputGroup} from "react-bootstrap";
+import InputGroup from "react-bootstrap/InputGroup";
 
 const defaultStylingOptions = {width: "21rem"};
 let outputs;

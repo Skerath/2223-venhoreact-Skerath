@@ -1,5 +1,6 @@
 import {memo} from "react";
-import {Card, Table} from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Table from "react-bootstrap/Table";
 import Stars from "./Stars";
 
 

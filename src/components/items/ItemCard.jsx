@@ -1,6 +1,6 @@
 import {memo} from "react";
 import IngredientCard from "../ingredients/IngredientCard";
-import {Card} from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 
 
 const beautifyText = (input) => {

@@ -1,5 +1,9 @@
 import useItems from "../../api/itemService";
-import {Button, Card, Form, Toast, ToastContainer} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import ToastContainer from "react-bootstrap/ToastContainer";
+import Toast from "react-bootstrap/Toast";
 import {Formik} from "formik";
 import * as yup from "yup";
 import {useState} from "react";
@@ -92,10 +96,10 @@ export const NewItemForm = () => {
                               errors,
                           }) => (
                             <Form noValidate onSubmit={handleSubmit} style={{width: "90%"}}>
-                                <Form.Group className="mb-3" controlId="validationFormik01">
+                                <Form.Group className="mb-3" controlId="formName">
                                     <Form.Label>Item Name</Form.Label>
                                     <Form.Control type="text"
-                                                  className={`bg-dark ${touched.name && errors.name ? "is-invalid" : null}`}
+                                                  className={`bg-dark form ${touched.name && errors.name ? "is-invalid" : null}`}
                                                   placeholder="Ex.: Combat - Ragni Region"
                                                   name="name"
                                                   value={values.name}
@@ -110,7 +114,7 @@ export const NewItemForm = () => {
                                 <Form.Group className="mb-3" controlId="formType">
                                     <Form.Label>Item Type</Form.Label>
                                     <Form.Select type="text"
-                                                 className={`bg-dark ${touched.name && errors.type ? "is-invalid" : null}`}
+                                                 className={`bg-dark form ${touched.name && errors.type ? "is-invalid" : null}`}
                                                  name="type"
                                                  value={values.type}
                                                  onChange={handleChange}
@@ -138,7 +142,7 @@ export const NewItemForm = () => {
                                 <Form.Group className="mb-3" controlId="formIngredient">
                                     <Form.Label>Ingredient Used</Form.Label>
                                     <Form.Control type="text"
-                                                  className={`bg-dark ${touched.name && errors.name ? "error" : null}`}
+                                                  className={`bg-dark form ${touched.ingredient && errors.ingredient ? "is-invalid" : null}`}
                                                   placeholder="Ex.: Accursed Effigy"
                                                   name="ingredient"
                                                   value={values.ingredient}
@@ -146,8 +150,10 @@ export const NewItemForm = () => {
                                                   onBlur={handleBlur}
                                                   isValid={touched.ingredient && !errors.ingredient}/>
                                     <Form.Control.Feedback type="invalid">{errors.ingredient}</Form.Control.Feedback>
-                                    <Form.Control.Feedback type="valid">This form being green does not mean the
-                                        Ingredient is found! Please double check.</Form.Control.Feedback>
+                                    <Form.Control.Feedback type="valid">
+                                        This form being green does not mean the Ingredient is found! Please double check
+                                        before submitting.
+                                    </Form.Control.Feedback>
                                     <Form.Text className="text-muted">
                                         Make sure the ingredient is spelled correctly and is usable for the selected
                                         item type

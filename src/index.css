@@ -7,3 +7,9 @@ body {
 .bg-dark {
   color: white !important;
 }
+
+.form:focus {
+  border: 2px solid;
+  box-shadow: none;
+  outline: none;
+}

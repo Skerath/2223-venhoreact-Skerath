@@ -1,7 +1,8 @@
 import {NavLink} from "react-router-dom";
 import AuthenticationButton from "../authentication/AuthenticationButton";
 import Navbar from "react-bootstrap/Navbar";
-import {Container, Nav} from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
 
 
 export default function Navibar() {
