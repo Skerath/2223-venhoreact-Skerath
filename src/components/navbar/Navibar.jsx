@@ -1,4 +1,3 @@
-import './Navbar.css';
 import {NavLink} from "react-router-dom";
 import AuthenticationButton from "../authentication/AuthenticationButton";
 import Navbar from "react-bootstrap/Navbar";
