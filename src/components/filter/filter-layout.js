@@ -18,22 +18,111 @@ export const INGREDIENTS_FILTER_LAYOUT = [{
             {
                 selected: true, value: "", displayName: "Any",
             }, {
-                value: "health", displayName: "Health",
-            }]
+                value: "AGILITYPOINTS", displayName: "Agilitypoints",
+            }, {
+                value: "AIRDAMAGEBONUS", displayName: "Airdamagebonus",
+            }, {
+                value: "AIRDEFENSE", displayName: "Airdefense",
+            }, {
+                value: "ATTACKSPEED", displayName: "Attackspeed",
+            }, {
+                value: "DAMAGEBONUS", displayName: "Damagebonus",
+            }, {
+                value: "DAMAGEBONUSRAW", displayName: "Damagebonusraw",
+            }, {
+                value: "DEFENSEPOINTS", displayName: "Defensepoints",
+            }, {
+                value: "DEXTERITYPOINTS", displayName: "Dexteritypoints",
+            }, {
+                value: "EARTHDAMAGEBONUS", displayName: "Earthdamagebonus",
+            }, {
+                value: "EARTHDEFENSE", displayName: "Earthdefense",
+            }, {
+                value: "EMERALDSTEALING", displayName: "Emeraldstealing",
+            }, {
+                value: "EXPLODING", displayName: "Exploding",
+            }, {
+                value: "FIREDAMAGEBONUS", displayName: "Firedamagebonus",
+            }, {
+                value: "FIREDEFENSE", displayName: "Firedefense",
+            }, {
+                value: "GATHER_SPEED", displayName: "Gather Speed",
+            }, {
+                value: "GATHER_XP_BONUS", displayName: "Gather Xp Bonus",
+            }, {
+                value: "HEALTHBONUS", displayName: "Healthbonus",
+            }, {
+                value: "HEALTHREGEN", displayName: "Healthregen",
+            }, {
+                value: "HEALTHREGENRAW", displayName: "Healthregenraw",
+            }, {
+                value: "INTELLIGENCEPOINTS", displayName: "Intelligencepoints",
+            }, {
+                value: "JUMP_HEIGHT", displayName: "Jump Height",
+            }, {
+                value: "LIFESTEAL", displayName: "Lifesteal",
+            }, {
+                value: "LOOT_QUALITY", displayName: "Loot Quality",
+            }, {
+                value: "LOOTBONUS", displayName: "Lootbonus",
+            }, {
+                value: "MANAREGEN", displayName: "Manaregen",
+            }, {
+                value: "MANASTEAL", displayName: "Manasteal",
+            }, {
+                value: "POISON", displayName: "Poison",
+            }, {
+                value: "REFLECTION", displayName: "Reflection",
+            }, {
+                value: "SOULPOINTS", displayName: "Soulpoints",
+            }, {
+                value: "SPEED", displayName: "Speed",
+            }, {
+                value: "SPELLDAMAGE", displayName: "Spelldamage",
+            }, {
+                value: "SPELLDAMAGERAW", displayName: "Spelldamageraw",
+            }, {
+                value: "STAMINA", displayName: "Stamina",
+            }, {
+                value: "STAMINA_REGEN", displayName: "Stamina Regen",
+            }, {
+                value: "STRENGTHPOINTS", displayName: "Strengthpoints",
+            }, {
+                value: "THORNS", displayName: "Thorns",
+            }, {
+                value: "THUNDERDAMAGEBONUS", displayName: "Thunderdamagebonus",
+            }, {
+                value: "THUNDERDEFENSE", displayName: "Thunderdefense",
+            }, {
+                value: "WATERDAMAGEBONUS", displayName: "Waterdamagebonus",
+            }, {
+                value: "WATERDEFENSE", displayName: "Waterdefense",
+            }, {
+                value: "XPBONUS", displayName: "Xpbonus",
+            },]
     },]
 }, {
     stylingOptions: {width: "21rem"}, filterObjects: [{
-        displayName: "Profession", selectOptions: [// TODO: fill this array up with possible select options with an API query
+        displayName: "Profession", selectOptions: [
+
             {
                 selected: true, value: "", displayName: "Any",
             }, {
-                value: "armouring", displayName: "Armouring",
+                value: "ALCHEMISM", displayName: "Alchemism"
             }, {
-                value: "tailoring", displayName: "Tailoring",
+                value: "ARMOURING", displayName: "Armouring"
             }, {
-                value: "woodworking", displayName: "Woodworking",
+                value: "COOKING", displayName: "Cooking"
             }, {
-                value: "scribing", displayName: "Scribing",
+                value: "JEWELING", displayName: "Jeweling"
+            }, {
+                value: "SCRIBING", displayName: "Scribing"
+            }, {
+                value: "TAILORING", displayName: "Tailoring"
+            }, {
+                value: "WEAPONSMITHING", displayName: "Weaponsmithing",
+            }, {
+                value: "WOODWORKING", displayName: "Woodworking",
             },]
     },]
 }];
