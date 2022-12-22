@@ -24,7 +24,7 @@ export default memo(function ItemCard(props) {
             <Card.Body>
                 <IngredientCard key={itemId} {...ingredientUsed}/>
             </Card.Body>
-            <Card.Footer className="p-3">
+            <Card.Footer className="p-2">
                 <Card.Text className="mb-0">{beautifyText(itemType)} submitted by</Card.Text>
                 <Card.Text>{owner}</Card.Text>
             </Card.Footer>

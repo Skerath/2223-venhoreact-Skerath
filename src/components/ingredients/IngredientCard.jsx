@@ -1,20 +1,7 @@
-import {IoStar, IoStarOutline} from "react-icons/io5";
 import {memo} from "react";
+import {Card, Table} from "react-bootstrap";
+import Stars from "./Stars";
 
-const stars = (amount) => {
-    if (amount === 0)
-        return (<IoStarOutline size={25}/>);
-
-    let color;
-
-    if (amount === 1)
-        color = "#B55800"
-    else if (amount === 2)
-        color = "silver"
-    else
-        color = "gold"
-    return (<>{[...new Array(amount)].map((_, i) => <IoStar key={i} size={25} color={color}/>)}</>);
-};
 
 const defineModifierColor = (input) => {
     return input < 0 ? "red" : "green";
@@ -33,50 +20,60 @@ const beautifyText = (input) => {
 };
 
 const modifiersTable = (modifiers) => {
-    if (Object.keys(modifiers).length !== 0) {
+    if (Object.keys(modifiers).length !== 0)
         return (
-            <table key={'modifiersTable'} className="table bg-dark">
+            <Table key={"modifiers"} className="bg-dark">
                 <tbody>
                 {Object.keys(modifiers).map((key, i) => (
-                    <tr key={i}>
-                        <td key={`${i}_left`} style={{textAlign: "left"}}>
-                                <span key={'minimum_value'}
-                                      style={{color: defineModifierColor(modifiers[key].minimum)}}>{addPositivePrefix(modifiers[key].minimum)}</span>
+                    <tr>
+                        <td key={`${i}_left`} className="text-start">
+                            <span key={'minimum_value'} style={{color: defineModifierColor(modifiers[key].minimum)}}>
+                                {addPositivePrefix(modifiers[key].minimum)}
+                            </span>
                             &nbsp;to&nbsp;
-                            <span key={'maximum_value'}
-                                  style={{color: defineModifierColor(modifiers[key].maximum)}}>{addPositivePrefix(modifiers[key].maximum)}</span>
+                            <span key={'maximum_value'} style={{color: defineModifierColor(modifiers[key].maximum)}}>
+                                {addPositivePrefix(modifiers[key].maximum)}
+                            </span>
                         </td>
-                        <td key={`${i}_right`} style={{textAlign: "right"}}>
+                        <td key={`${i}_right`} className="text-end">
                             {beautifyText(key)}
                         </td>
                     </tr>))}
                 </tbody>
-            </table>
+            </Table>
         );
-    } else return <></>;
-}
+    else return null;
+};
 
 
-function requirementsTable(requirements) {
-    return <table key={'requirements'} className="table bg-dark">
-        <tbody>
-        {Object.keys(requirements).map((key, i) => {
-            if (requirements[key])
-                return (
-                    <tr key={i}>
-                        <td key={`${i}_left`}
-                            style={{
-                                color: defineRequirementColor(requirements[key]),
-                                textAlign: "left"
-                            }}>{addPositivePrefix(requirements[key])}</td>
-                        <td key={`${i}_right`} style={{textAlign: "right"}}>{beautifyText(key)}</td>
-                    </tr>);
-            else
-                return null;
-        })}
-        </tbody>
-    </table>;
-}
+const requirementsTable = (requirements) => {
+    if (Object.keys(requirements).length !== 0)
+        return (
+            <Table key={"requirements"} className="bg-dark">
+                <tbody>
+                {Object.keys(requirements).map((key, i) => {
+                    if (requirements[key])
+                        return (
+                            <tr key={i}>
+                                <td key={`${i}_left`}
+                                    className="text-start"
+                                    style={{
+                                        color: defineRequirementColor(requirements[key]),
+                                    }}>
+                                    {addPositivePrefix(requirements[key])}
+                                </td>
+                                <td key={`${i}_right`} className="text-end">
+                                    {beautifyText(key)}
+                                </td>
+                            </tr>
+                        );
+                    else return null;
+                })}
+                </tbody>
+            </Table>
+        );
+    else return null;
+};
 
 
 export default memo(function IngredientCard(props) {
@@ -91,23 +88,27 @@ export default memo(function IngredientCard(props) {
     } = props;
 
     return (
-        <div key={resourceID} className="card fadeIn bg-dark">
-            <div className="card-header" style={{height: "12rem"}}>
-                <div className="w-100">
-                    {stars(tier)}
-                </div>
-                <h2 className="card-title text-center mb-0">{name}</h2>
-                <h3 className="card-subtitle w-100">&lt;&nbsp;Level&nbsp;{level}&nbsp;&gt;</h3>
-            </div>
-            <div className="card-body">
+        <Card key={resourceID} className="fadeIn" bg="dark">
+            <Card.Header className="p-3" style={{height: "12rem"}}>
+                <Stars amount={tier}></Stars>
+                <Card.Title as="h2" className="mb-0">
+                    {name}
+                </Card.Title>
+                <Card.Subtitle as="h3" className="w-100">
+                    &lt;&nbsp;Level&nbsp;{level}&nbsp;&gt;
+                </Card.Subtitle>
+            </Card.Header>
+            <Card.Body>
                 {modifiersTable(modifiers)}
                 {requirementsTable(requirements)}
-            </div>
-            <div className="card-footer py-3 px-0">
-                <h6 className="mb-0">{professions.map((profession) => {
-                    return beautifyText(profession);
-                }).join(", ")}</h6>
-            </div>
-        </div>
+            </Card.Body>
+            <Card.Footer>
+                <Card.Text as="h6">
+                    {professions.map((profession) => {
+                        return beautifyText(profession);
+                    }).join(", ")}
+                </Card.Text>
+            </Card.Footer>
+        </Card>
     );
 });
