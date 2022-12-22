@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import {Container, Nav} from "react-bootstrap";
 
 
-export default function NewNavbar() {
+export default function Navibar() {
     return (
         <header>
             <Navbar bg="dark" variant="dark" expand="lg">

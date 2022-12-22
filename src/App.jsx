@@ -5,7 +5,7 @@ import {PageNotFound} from "./components/pageNotFound/PageNotFound";
 import {Footer} from "./components/footer/Footer";
 import AuthLanding from "./components/authentication/AuthLanding";
 import RequireAuth from "./components/authentication/RequireAuth";
-import NewNavbar from "./components/navbar/NewNavBar";
+import Navibar from "./components/navbar/Navibar";
 
 function App() {
     return (
@@ -19,7 +19,7 @@ function App() {
                 }/>
                 <Route path="ingredients" element={
                     <RequireAuth>
-                        <NewNavbar/>
+                        <Navibar/>
                         <IngredientsPage/>
                         <Footer/>
                     </RequireAuth>
@@ -27,7 +27,7 @@ function App() {
                 <Route path="items">
                     <Route path="" element={
                         <RequireAuth>
-                            <NewNavbar/>
+                            <Navibar/>
                             <ItemsPage/>
                             <Footer/>
                         </RequireAuth>
@@ -35,7 +35,7 @@ function App() {
                     }/>
                     <Route path="create" element={
                         <RequireAuth>
-                            <NewNavbar/>
+                            <Navibar/>
                             <NewItemPage/>
                             <Footer/>
                         </RequireAuth>
@@ -43,14 +43,14 @@ function App() {
                 </Route>
                 <Route path="login" element={
                     <>
-                        <NewNavbar/>
+                        <Navibar/>
                         <AuthLanding/>
                         <Footer/>
                     </>
                 }/>
                 <Route path="*" element={
                     <>
-                        <NewNavbar/>
+                        <Navibar/>
                         <PageNotFound/>
                         <Footer/>
                     </>
