@@ -1,4 +1,4 @@
-import './Ingredient.css';
+// import './Ingredient.css';
 import {IoStar, IoStarOutline} from "react-icons/io5";
 import {memo} from "react";
 

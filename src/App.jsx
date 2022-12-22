@@ -1,11 +1,11 @@
 import {Route, Routes} from "react-router";
 import {HomePage, IngredientsPage, ItemsPage} from "./pages";
-import Navbar from "./components/navbar/Navbar";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import {PageNotFound} from "./components/pageNotFound/PageNotFound";
 import {Footer} from "./components/footer/Footer";
 import AuthLanding from "./components/authentication/AuthLanding";
 import RequireAuth from "./components/authentication/RequireAuth";
+import NewNavbar from "./components/navbar/NewNavBar";
 
 function App() {
     return (
@@ -19,7 +19,7 @@ function App() {
                 }/>
                 <Route path="ingredients" element={
                     <RequireAuth>
-                        <Navbar/>
+                        <NewNavbar/>
                         <IngredientsPage/>
                         <Footer/>
                     </RequireAuth>
@@ -27,7 +27,7 @@ function App() {
                 <Route path="items">
                     <Route path="" element={
                         <RequireAuth>
-                            <Navbar/>
+                            <NewNavbar/>
                             <ItemsPage/>
                             <Footer/>
                         </RequireAuth>
@@ -35,7 +35,7 @@ function App() {
                     }/>
                     <Route path="new" element={
                         <RequireAuth>
-                            <Navbar/>
+                            <NewNavbar/>
                             <p>Not implemented yet.</p>
                             <Footer/>
                         </RequireAuth>
@@ -43,14 +43,14 @@ function App() {
                 </Route>
                 <Route path="login" element={
                     <>
-                        <Navbar/>
+                        <NewNavbar/>
                         <AuthLanding/>
                         <Footer/>
                     </>
                 }/>
                 <Route path="*" element={
                     <>
-                        <Navbar/>
+                        <NewNavbar/>
                         <PageNotFound/>
                         <Footer/>
                     </>

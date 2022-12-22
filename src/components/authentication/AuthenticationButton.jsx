@@ -1,8 +1,9 @@
 import {useAuth0} from '@auth0/auth0-react';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
+import {Image} from "react-bootstrap";
 
-export default function AuthenticationButton({type, stylingOptions}) {
+export default function AuthenticationButton() {
     const {
         isAuthenticated,
         user,
@@ -12,20 +13,12 @@ export default function AuthenticationButton({type, stylingOptions}) {
         const {picture, givenName} = user;
         return (
             <>
-
-                <li className={type ? type : "nav-item"} style={{margin: "auto"}}>
-                    <LogoutButton type={type ? type : "nav-link"}
-                                  stylingOptions={stylingOptions ? stylingOptions : {margin: "auto"}}/>
-                </li>
-                {type ? null : <li className="nav-item">
-                    <img style={{maxHeight: "45px", margin: "auto", borderRadius: "50%"}} src={picture} alt={givenName}
-                         className="nav-link"/>
-                </li>}
-
+                <LogoutButton/>
+                &emsp;
+                <Image rounded style={{maxHeight: "40px"}} src={picture} alt={givenName}/>
             </>
         );
     }
 
-    return <LoginButton type={type ? type : "nav-link"}
-                        stylingOptions={stylingOptions ? stylingOptions : {margin: "auto"}}/>;
+    return <LoginButton/>;
 }

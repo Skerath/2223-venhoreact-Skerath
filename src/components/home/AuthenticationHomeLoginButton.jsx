@@ -1,7 +1,7 @@
 import {useAuth0} from '@auth0/auth0-react';
 import {useCallback} from 'react';
 
-function LoginButton() {
+function AuthenticationHomeLoginButton() {
     const {loginWithRedirect} = useAuth0();
 
     const handleLogin = useCallback(
@@ -12,11 +12,15 @@ function LoginButton() {
     );
 
     return (
-        <button className="btn bg-dark" style={{padding: 8, maxHeight: "40px", paddingLeft: "0", paddingRight: "0"}}
-                onClick={handleLogin}>
+        <button
+            type="button"
+            style={{color: "white"}}
+            className={`menu-item btn`}
+            onClick={handleLogin}
+        >
             Log in
         </button>
     );
 }
 
-export default LoginButton;
+export default AuthenticationHomeLoginButton;
