@@ -31,7 +31,7 @@ const useItems = () => {
                 Authorization: `Bearer ${token}`
             },
         });
-        return data;
+        return data[0];
     }, [getAccessTokenSilently]);
 
 
