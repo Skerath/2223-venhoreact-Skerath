@@ -28,7 +28,6 @@ export default function Items({queryPrefix, data}) {
             results = await itemApi.getItemsByQuery(paramsQuery(queryPrefix, data));
             setItems(results);
         } catch (err) {
-            console.log(err.request.status)
             if (err.request) {
                 if (err.request.status === 404)
                     setItems([]);

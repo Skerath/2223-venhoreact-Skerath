@@ -35,6 +35,7 @@ export default function FilterInput(props) {
                 key={refKey}
                 onChange={() => debounced()}
                 type={filterObject.inputType}
+                min="0"
                 className="bg-dark form"
                 placeholder=""
                 id={filterObject.inputType + filterObject.displayName + "Input"}

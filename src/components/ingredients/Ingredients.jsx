@@ -35,9 +35,11 @@ export default function Ingredients({queryPrefix, data}) {
                     setIngredients([]);
                 else if (err.request.status === 403)
                     setError("You're not allowed to view Venho's ingredients!");
-                else setError(err)
+                else if (err.request.status === 400) {
+                    setError(err.response.data.details.query || JSON.stringify(err));
+                } else setError(err);
             } else
-                setError(err)
+                setError(err);
         } finally {
             setIsLoading(false);
         }
