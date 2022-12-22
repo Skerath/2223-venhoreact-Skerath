@@ -105,8 +105,10 @@ export default memo(function ItemCard({props}) {
             {itemClicked ?
                 <EditItemForm currentValues={itemClicked} wantsClosed={handleClose}/> : null}
             <Card key={itemId} className="fadeIn" bg="dark">
-                <Card.Header className="p-3">
-                    <Card.Title as="h1">{name}</Card.Title>
+                <Card.Header className="p-3" style={{height: "8rem"}}>
+                    <Card.Title as="h2" className="mb-0">
+                        {name}
+                    </Card.Title>
                 </Card.Header>
                 <Card.Body>
                     <IngredientCard key={itemId} {...ingredientUsed}/>
