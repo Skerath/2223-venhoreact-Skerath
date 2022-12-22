@@ -1,5 +1,6 @@
 import {useAuth0} from '@auth0/auth0-react';
 import {useCallback} from 'react';
+import Button from "react-bootstrap/Button";
 
 function LoginButton() {
     const {loginWithRedirect} = useAuth0();
@@ -12,10 +13,12 @@ function LoginButton() {
     );
 
     return (
-        <button className="btn bg-dark" style={{padding: 8, maxHeight: "40px", paddingLeft: "0", paddingRight: "0"}}
+        <Button variant="outline-dark"
+                className="text-muted"
+                style={{padding: 8, maxHeight: "40px"}}
                 onClick={handleLogin}>
             Log in
-        </button>
+        </Button>
     );
 }
 

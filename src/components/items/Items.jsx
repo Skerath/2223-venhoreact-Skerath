@@ -41,7 +41,6 @@ export default function Items({queryPrefix, data}) {
         }
     }, [data, queryPrefix]);
 
-
     useEffect(() => {
         updateItemContainer();
     }, [updateItemContainer]);

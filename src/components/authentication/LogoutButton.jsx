@@ -1,12 +1,15 @@
 import {useAuth0} from '@auth0/auth0-react';
+import Button from "react-bootstrap/Button";
 
 function LogoutButton() {
     const {logout} = useAuth0();
     return (
-        <button type="button" className="btn bg-dark" style={{padding: 8, maxHeight: "40px", paddingLeft: "0", paddingRight:"0"}}
+        <Button variant="outline-dark"
+                className="text-muted"
+                style={{padding: 8, maxHeight: "40px"}}
                 onClick={() => logout({returnTo: window.location.origin,})}>
             Log out
-        </button>
+        </Button>
     );
 }
 
