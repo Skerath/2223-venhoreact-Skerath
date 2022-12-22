@@ -29,10 +29,12 @@ export default function Items({queryPrefix, data}) {
             setItems(results);
         } catch (err) {
             if (err.request) {
-                if (err.request.status === 404)
+                if (err.request.status === 0)
+                        setError({message: "API seems to be offline."})
+                else if (err.request.status === 404)
                     setItems([]);
                 else if (err.request.status === 403)
-                    setError("You're not allowed to view Venho's custom items.");
+                    setError({message: "You're not allowed to view Venho's custom items."});
                 else setError(err)
             } else
                 setError(err)

@@ -1,9 +1,9 @@
 import Spinner from "react-bootstrap/Spinner";
 
-export default function Loader({loading}) {
+export default function Loader({loading, position}) {
     if (loading) {
         return (
-            <div className="text-center" style={{marginTop: "20vw"}}>
+            <div className="text-center" style={{marginTop: "20vw", position: `${position ? position : ""}`}}>
                 <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>

@@ -30,11 +30,11 @@ export default function Ingredients({queryPrefix, data}) {
         } catch (err) {
             if (err.request) {
                 if (err.request.status === 0)
-                    setError("API seems to be offline.")
+                    setError({message: "API seems to be offline."})
                 else if (err.request.status === 404)
                     setIngredients([]);
                 else if (err.request.status === 403)
-                    setError("You're not allowed to view Venho's ingredients!");
+                    setError({message: "You're not allowed to view Venho's ingredients!"});
                 else if (err.request.status === 400) {
                     setError(err.response.data.details.query || JSON.stringify(err));
                 } else setError(err);

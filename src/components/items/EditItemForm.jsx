@@ -19,7 +19,7 @@ const validationSchema = yup.object().shape({
         .required("Ingredient name is required"),
 });
 
-export const NewItemForm = () => {
+export const EditItemForm = ({currentValues}) => {
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
     const itemService = useItems();
@@ -30,7 +30,7 @@ export const NewItemForm = () => {
     return (
         <>
             {error ?
-                <ToastContainer className="p-3 fadeIn" position='bottom-center'>
+                <ToastContainer className="p-3" position='bottom-center'>
                     <Toast bg="danger" onClose={closeErrorToast}>
                         <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>

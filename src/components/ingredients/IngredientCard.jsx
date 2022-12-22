@@ -26,7 +26,7 @@ const modifiersTable = (modifiers) => {
             <Table key={"modifiers"} className="bg-dark">
                 <tbody>
                 {Object.keys(modifiers).map((key, i) => (
-                    <tr>
+                    <tr key={i}>
                         <td key={`${i}_left`} className="text-start">
                             <span key={'minimum_value'} style={{color: defineModifierColor(modifiers[key].minimum)}}>
                                 {addPositivePrefix(modifiers[key].minimum)}

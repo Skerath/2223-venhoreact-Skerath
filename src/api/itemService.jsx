@@ -1,10 +1,6 @@
-import {
-    useAuth0,
-} from '@auth0/auth0-react';
+import {useAuth0,} from '@auth0/auth0-react';
 import axios from 'axios';
-import {
-    useCallback,
-} from 'react';
+import {useCallback,} from 'react';
 
 const baseUrl = `${process.env.REACT_APP_API_URL}/items`;
 
@@ -26,10 +22,23 @@ const useItems = () => {
         return data;
     }, [getAccessTokenSilently]);
 
+    const getItemById = useCallback(async (id) => {
+        console.log(id);
+        const token = await getAccessTokenSilently();
+        const {
+            data
+        } = await axios.get(`${baseUrl}/id/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        });
+        return data;
+    }, [getAccessTokenSilently]);
+
 
     const createItem = async (values) => {
         const token = await getAccessTokenSilently();
-        const result = await axios.put(baseUrl, null, {
+        return await axios.put(baseUrl, null, {
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -39,12 +48,12 @@ const useItems = () => {
                 ingredient: values.ingredient,
             }
         });
-        return result;
     };
 
     return {
         getItemsByQuery,
         createItem,
+        getItemById,
     };
 }
 
