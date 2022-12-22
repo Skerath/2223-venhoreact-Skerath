@@ -36,7 +36,7 @@ export function Home() {
                          to="/items" replace>Items</NavLink>
                 <NavLink key={"3"} id={"3"} className="menu-item" style={{textDecoration: "none", color: "inherit"}}
                          as={NavLink}
-                         to="/items/new" replace>Create Item</NavLink>
+                         to="/items/create" replace>Create Item</NavLink>
                 {isAuthenticated ? <AuthenticationHomeLogoutButton/> : <AuthenticationHomeLoginButton/>}
             </div>
             <div id="menu-background-pattern"></div>
