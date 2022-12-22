@@ -6,8 +6,8 @@ import {Container, Nav} from "react-bootstrap";
 
 export default function Navibar() {
     return (
-        <header>
-            <Navbar bg="dark" variant="dark" expand="lg">
+        <header style={{paddingBottom: "1rem"}}>
+            <Navbar style={{padding: 0}} bg="dark" variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand as={NavLink} to="/" replace>Venho</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>

@@ -5,6 +5,7 @@ import Ingredients from "./components/ingredients/Ingredients";
 import {Home} from "./components/home/Home";
 import Items from "./components/items/Items";
 import {NewItemForm} from "./components/items/NewItemForm";
+import '../src/components/Cards.css'
 
 const queryPrefix = [];
 

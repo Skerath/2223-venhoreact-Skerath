@@ -1,6 +1,6 @@
-import '../ingredients/Ingredient.css';
 import {memo} from "react";
 import IngredientCard from "../ingredients/IngredientCard";
+import {Card} from "react-bootstrap";
 
 
 const beautifyText = (input) => {
@@ -17,17 +17,17 @@ export default memo(function ItemCard(props) {
     } = props;
 
     return (
-        <div key={itemId} className="card fadeIn bg-dark">
-            <div className="card-header" style={{height: "10rem"}}>
-                <h2 className="card-title text-center mb-0">{name}</h2>
-                <h4 className="card-subtitle w-100">{beautifyText(itemType)}</h4>
-            </div>
-            <div className="card-body">
+        <Card key={itemId} className="fadeIn" bg="dark">
+            <Card.Header className="p-3">
+                <Card.Title>{name}</Card.Title>
+            </Card.Header>
+            <Card.Body>
                 <IngredientCard key={itemId} {...ingredientUsed}/>
-            </div>
-            <div className="card-footer py-3 px-0">
-                <h6 className="mb-0">Submitted by {owner}</h6>
-            </div>
-        </div>
+            </Card.Body>
+            <Card.Footer className="p-3">
+                <Card.Text className="mb-0">{beautifyText(itemType)} submitted by</Card.Text>
+                <Card.Text>{owner}</Card.Text>
+            </Card.Footer>
+        </Card>
     );
 });
