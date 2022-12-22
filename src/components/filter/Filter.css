@@ -1,13 +1,5 @@
-.bg-dark {
-    color: white !important;
-}
-
-.form-control:focus {
+.form:focus {
     border: 2px solid;
     box-shadow: none;
     outline: none;
-}
-
-.input-group {
-    margin: 0.5rem;
 }

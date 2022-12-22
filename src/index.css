@@ -3,3 +3,7 @@ body {
   color: white;
   min-height: 100%;
 }
+
+.bg-dark {
+  color: white !important;
+}

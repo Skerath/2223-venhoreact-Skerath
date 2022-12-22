@@ -1,4 +1,6 @@
 import {Error} from "../alert/Error";
+import FormFloating from "react-bootstrap/FormFloating";
+import FormSelect from "react-bootstrap/FormSelect"
 
 let defaultSelected;
 
@@ -30,13 +32,13 @@ export default function FilterSelect(props) {
     if (hasError) return hasError;
 
     return (
-        <div className="form-floating">
-            <select
+        <FormFloating>
+            <FormSelect
                 ref={(element) => {
                     refs.current[refKey] = element
                 }}
                 onChange={onUserInput}
-                className="form-control bg-dark"
+                className="bg-dark form"
                 defaultValue={defaultSelected.value}
                 id={"select" + filterObject.displayName + "Select"}
                 aria-label={filterObject.displayName}
@@ -46,9 +48,9 @@ export default function FilterSelect(props) {
                     return (<option className={"bg-dark"} value={option.value}
                                     key={i}>{option.displayName}</option>)
                 })}
-            </select>
+            </FormSelect>
             <label
                 htmlFor={"select" + filterObject.displayName + "Input"}>{filterObject.displayName}</label>
-        </div>
+        </FormFloating>
     );
 };

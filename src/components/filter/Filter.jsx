@@ -3,6 +3,7 @@ import FilterInput from "./FilterInput";
 import FilterSelect from "./FilterSelect";
 import {useRef} from "react";
 import {Error} from "../alert/Error";
+import {InputGroup} from "react-bootstrap";
 
 const defaultStylingOptions = {width: "21rem"};
 let outputs;
@@ -29,28 +30,28 @@ const mapFilterItems = (sublist, sublistCounter, onUserInput, refsList) => {
         else {
             console.error(`Filter layout was not set-up correctly: FilterItem must either have an inputType or selectOptions`);
             return (<Error styling={{width: null}}
-                           error={"Filter has been set-up incorrectly. Please contact the developer."}/>);
+                           error={"Filter has been set-up incorrectly."}/>);
         }
         refKeysList.push(`${sublistCounter}-${itemCounter}`);
         return mappedItem;
     });
 }
 
-function mapFilterGroups(layout, onUserChange, refsList) {
+const mapFilterGroups = (layout, onUserChange, refsList) => {
     refKeysList.length = 0;
 
     return layout.map((sublist, sublistCounter) => {
         if (!sublist.stylingOptions) {
-            console.error(`stylingOptions for sublist #${sublistCounter} was not provided. Using default: ${JSON.stringify(defaultStylingOptions)}`);
+            console.info(`stylingOptions for sublist #${sublistCounter} was not provided. Using default: ${JSON.stringify(defaultStylingOptions)}`);
             sublist.stylingOptions = defaultStylingOptions;
         }
         return (
-            <div className="input-group" style={sublist.stylingOptions} key={sublistCounter}>
+            <InputGroup style={{margin: "0.5rem", ...sublist.stylingOptions}} key={sublistCounter}>
                 {mapFilterItems(sublist, sublistCounter, onUserChange, refsList)}
-            </div>
+            </InputGroup>
         );
     });
-}
+};
 
 export default function Filter({layout, output}) {
     const refsList = useRef([]);
