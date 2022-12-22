@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router";
-import {HomePage, IngredientsPage, ItemsPage} from "./pages";
+import {HomePage, IngredientsPage, ItemsPage, NewItemPage} from "./pages";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import {PageNotFound} from "./components/pageNotFound/PageNotFound";
 import {Footer} from "./components/footer/Footer";
@@ -33,10 +33,10 @@ function App() {
                         </RequireAuth>
                     }/>
                     }/>
-                    <Route path="new" element={
+                    <Route path="create" element={
                         <RequireAuth>
                             <NewNavbar/>
-                            <p>Not implemented yet.</p>
+                            <NewItemPage/>
                             <Footer/>
                         </RequireAuth>
                     }/>
