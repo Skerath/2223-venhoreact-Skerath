@@ -1,5 +1,5 @@
 import Filter from "./components/filter/Filter";
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {INGREDIENTS_FILTER_LAYOUT, ITEM_FILTER_LAYOUT} from "./components/filter/filter-layout";
 import Ingredients from "./components/ingredients/Ingredients";
 import {Home} from "./components/home/Home";
@@ -8,6 +8,7 @@ import {Button, Card, Form} from "react-bootstrap";
 import './NewItemPage.css'
 import {Formik} from "formik";
 import * as yup from "yup";
+import useItems from "../src/api/itemService";
 
 const queryPrefix = [];
 
@@ -59,6 +60,22 @@ const validationSchema = yup.object().shape({
 });
 
 export const NewItemPage = () => {
+    const itemService = useItems();
+
+    const submitItem = async (data) => {
+        let results;
+        try {
+            // setIsLoading(true);
+            // setError(false);
+            results = await itemService.createItem(data);
+            // setIngredients(results);
+        } catch (err) {
+            console.log(err)
+        } finally {
+            // setIsLoading(false);
+        }
+    };
+
 
     return (
         <main style={{display: "inline-flex", justifyContent: "center", width: "100vw"}}>
@@ -68,10 +85,11 @@ export const NewItemPage = () => {
                 <Card.Body>
                     <Formik
                         validationSchema={validationSchema}
-                        onSubmit={(values, {setSubmitting, resetForm}) => {
+                        onSubmit={async (values, {setSubmitting, resetForm}) => {
                             setSubmitting(true)
+                            const result = await itemService.createItem(values);
+                            console.log(result);
                             resetForm();
-                            setSubmitting(false);
                         }}
                         initialValues={{
                             name: '',
@@ -159,6 +177,5 @@ export const NewItemPage = () => {
                 </Card.Body>
             </Card>
         </main>
-    )
-        ;
+    );
 };

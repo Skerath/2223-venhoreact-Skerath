@@ -6,7 +6,7 @@ import {
     useCallback,
 } from 'react';
 
-const baseUrl = `${process.env.REACT_APP_API_URL}/items/?`;
+const baseUrl = `${process.env.REACT_APP_API_URL}/items`;
 
 const useItems = () => {
     const {
@@ -26,9 +26,26 @@ const useItems = () => {
         return data;
     }, [getAccessTokenSilently]);
 
+
+    const createItem = async (values) => {
+        const token = await getAccessTokenSilently();
+        const result = await axios.put(baseUrl, null, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            params: {
+                name: values.name,
+                type: values.type,
+                ingredient: values.ingredient,
+            }
+        });
+        return result;
+    };
+
     return {
         getItemsByQuery,
-    }
+        createItem,
+    };
 }
 
 export default useItems;
