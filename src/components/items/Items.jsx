@@ -30,7 +30,7 @@ export default function Items({queryPrefix, data}) {
         } catch (err) {
             if (err.request) {
                 if (err.request.status === 0)
-                        setError({message: "API seems to be offline."})
+                    setError({message: "API seems to be offline."})
                 else if (err.request.status === 404)
                     setItems([]);
                 else if (err.request.status === 403)

@@ -9,16 +9,16 @@ import Toast from "react-bootstrap/Toast";
 import Loader from "../Loader/Loader";
 import {EditItemForm} from "./EditItemForm";
 
-
 const beautifyText = (input) => {
     return input.toLowerCase().split("_").map(word => word[0].toUpperCase() + word.slice(1)).join(" ");
 };
 
-export default memo(function ItemCard({props, isChanged}) {
+export default memo(function ItemCard({props}) {
     const itemApi = useItems();
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
     const [itemClicked, setItemClicked] = useState(null);
+    const [isDeleted, setIsDeleted] = useState(false);
 
     const closeErrorToast = () => setError(false);
 
@@ -56,13 +56,29 @@ export default memo(function ItemCard({props, isChanged}) {
     };
 
     const handleDelete = async (event, itemId) => {
-        console.log("deleted!")
-        // isChanged()
+        let result;
+        try {
+            setError(false);
+            setIsLoading(true);
+            result = await itemApi.deleteItem(itemId);
+        } catch (err) {
+            if (err.request)
+                if (err.request.status === 0)
+                    setError("API seems to be offline.");
+                else if (err.request.status === 404)
+                    setError("This item does not belong to you!");
+                else setError(JSON.stringify(err));
+            else setError(err);
+        } finally {
+            if (result)
+                setIsDeleted(true)
+            setIsLoading(false);
+        }
     };
 
     return (
         <>
-            <Loader loading={isLoading} position="absolute"/>
+            <Loader loading={isLoading} position="fixed"/>
             {error ?
                 <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
                     <Toast bg="danger" onClose={closeErrorToast}>
@@ -73,7 +89,21 @@ export default memo(function ItemCard({props, isChanged}) {
                         <Toast.Body>{error}</Toast.Body>
                     </Toast>
                 </ToastContainer> : null}
-            {itemClicked ? <EditItemForm currentValues={itemClicked} wantsClosed={handleClose}/> : null}
+            {isDeleted ?
+                <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
+                    <Toast bg="success">
+                        <Toast.Header>
+                            <strong className="me-auto">Venho</strong>
+                            <small>Deletion successful</small>
+                        </Toast.Header>
+                        <Toast.Body>
+                            Item with name "{name}" has been deleted!
+                        </Toast.Body>
+                    </Toast>
+                </ToastContainer> : null
+            }
+            {itemClicked ?
+                <EditItemForm currentValues={itemClicked} wantsClosed={handleClose}/> : null}
             <Card key={itemId} className="fadeIn" bg="dark">
                 <Card.Header className="p-3">
                     <Card.Title as="h1">{name}</Card.Title>
@@ -84,12 +114,12 @@ export default memo(function ItemCard({props, isChanged}) {
                 <Card.Footer className="p-2">
                     <Card.Text className="mb-0">{beautifyText(itemType)} submitted by</Card.Text>
                     <Card.Text>{owner}</Card.Text>
-                    <Button key={"updateButton"} variant="outline-light" type="button"
+                    <Button key={"deleteButton"} variant="outline-light" type="button"
                             onClick={event => handleDelete(event, itemId)}
                             className="d-inline-flex justify-content-center m-2">
                         <FiDelete/>
                     </Button>
-                    <Button key={"deleteButton"} variant="outline-light" type="button"
+                    <Button key={"updateButton"} variant="outline-light" type="button"
                             onClick={event => handleEdit(event, itemId)}
                             className="d-inline-flex justify-content-center m-2">
                         <FiEdit2/>

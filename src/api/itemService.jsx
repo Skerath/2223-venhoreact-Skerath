@@ -35,7 +35,7 @@ const useItems = () => {
     }, [getAccessTokenSilently]);
 
 
-    const createItem = async (values) => {
+    const createItem = useCallback(async (values) => {
         const token = await getAccessTokenSilently();
         return await axios.post(baseUrl, null, {
             headers: {
@@ -47,9 +47,9 @@ const useItems = () => {
                 ingredient: values.ingredient,
             }
         });
-    };
+    }, [getAccessTokenSilently]);
 
-    const editItem = async (values) => {
+    const editItem = useCallback(async (values) => {
         const token = await getAccessTokenSilently();
         return await axios.put(baseUrl, null, {
             headers: {
@@ -62,13 +62,24 @@ const useItems = () => {
                 ingredient: values.ingredient,
             }
         });
-    };
+    }, [getAccessTokenSilently]);
 
+    const deleteItem = useCallback(async (id) => {
+        const token = await getAccessTokenSilently();
+        await axios.delete(`${baseUrl}/id/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        });
+
+        return true;
+    }, [getAccessTokenSilently]);
 
     return {
         getItemsByQuery,
         createItem,
         editItem,
+        deleteItem,
         getItemById,
     };
 }

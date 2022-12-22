@@ -18,7 +18,7 @@ const validationSchema = yup.object().shape({
         .required("Ingredient name is required"),
 });
 
-export const EditItemForm = ({currentValues, wantsClosed, wantsUpdate}) => {
+export const EditItemForm = ({currentValues, wantsClosed}) => {
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
     const itemService = useItems();
@@ -65,7 +65,7 @@ export const EditItemForm = ({currentValues, wantsClosed, wantsUpdate}) => {
                     <hr/>
                     <Formik
                         validationSchema={validationSchema}
-                        onSubmit={async (values, {setSubmitting, resetForm}) => {
+                        onSubmit={async (values, {setSubmitting}) => {
                             let result
                             try {
                                 setResult(null);
@@ -82,8 +82,7 @@ export const EditItemForm = ({currentValues, wantsClosed, wantsUpdate}) => {
                                 } else setError(JSON.stringify(err));
                             } finally {
                                 if (result && result.status === 204) {
-                                    setResult(`Item with name "${previousName}" has been updated! Refreshing page in 5 seconds.`);
-                                    // setTimeout(wantsUpdate, 5000);
+                                    setResult(`Item with name "${previousName}" has been updated!`);
                                 }
                             }
                         }}

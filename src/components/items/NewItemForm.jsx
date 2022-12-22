@@ -30,7 +30,7 @@ export const NewItemForm = () => {
     return (
         <>
             {error ?
-                <ToastContainer className="p-3 fadeIn" position='bottom-center'>
+                <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
                     <Toast bg="danger" onClose={closeErrorToast}>
                         <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>
@@ -40,7 +40,7 @@ export const NewItemForm = () => {
                     </Toast>
                 </ToastContainer> : null}
             {result ?
-                <ToastContainer className="p-3" position='bottom-center'>
+                <ToastContainer className="p-3 position-fixed" position='bottom-center'>
                     <Toast bg="success" onClose={closeSuccessToast}>
                         <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>
