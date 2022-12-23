@@ -63,8 +63,6 @@ export const NewItemForm = () => {
                                 setSubmitting(true)
                                 result = await itemService.createItem(values)
                             } catch (err) {
-                                console.log(JSON.stringify(err));
-                                console.log(err);
                                 hasError = err
                                 if (err.request) {
                                     if (err.request.status === 0)
