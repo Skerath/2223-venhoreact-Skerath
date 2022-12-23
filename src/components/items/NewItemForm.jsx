@@ -49,7 +49,7 @@ export const NewItemForm = () => {
                         <Toast.Body>{result}</Toast.Body>
                     </Toast>
                 </ToastContainer> : null}
-            <Card bg="dark" style={{width: "50rem", marginTop: "10vh", marginBottom: "10vh"}}>
+            <Card bg="dark" className="fadeIn" style={{width: "50rem", marginTop: "10vh", marginBottom: "10vh"}}>
                 <Card.Header className={"h2"}>Submit new item
                 </Card.Header>
                 <Card.Body>
@@ -158,7 +158,8 @@ export const NewItemForm = () => {
                                         item type
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="outline-light" type="submit" data-cy="submit_button" disabled={isSubmitting}>
+                                <Button variant="outline-light" type="submit" data-cy="submit_button"
+                                        disabled={isSubmitting}>
                                     {isSubmitting ? 'Submitting…' : 'Submit Item'}
                                 </Button>
                             </Form>
