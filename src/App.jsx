@@ -8,8 +8,6 @@ import RequireAuth from "./components/authentication/RequireAuth";
 import Navibar from "./components/Navibar/Navibar";
 
 function App() {
-    console.log(`${process.env.REACT_APP_API_URL}`);
-
     return (
         <>
             <ScrollToTop/>
