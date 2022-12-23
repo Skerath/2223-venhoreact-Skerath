@@ -13,9 +13,8 @@ Ik verwacht dat volgende software reeds geïnstalleerd is:
 - [NodeJS](https://nodejs.org)
 - [Yarn](https://yarnpkg.com)
 - [MySQL Community Server](https://dev.mysql.com/downloads/mysql/)
-- ...
-
-> Vul eventueel aan
+* in Firefox: `security.mixed_content.block_active_content` staat op `false` in `about:config`
+* of Chrome: slotje linksbovenaan in zoekbalk > site instellingen > onveilige content > toestaan
 
 ## Opstarten
 
