@@ -91,10 +91,10 @@ export default memo(function ItemCard({props}) {
                     </Toast>
                 </ToastContainer> : null}
             {isDeleted ?
-                <ToastContainer className="p-3 fadeIn position-fixed" onClose={closeSuccessToast}
+                <ToastContainer className="p-3 fadeIn position-fixed"
                                 data-cy="success_toast"
                                 position='bottom-center'>
-                    <Toast bg="success">
+                    <Toast bg="success" onClose={closeSuccessToast}>
                         <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>
                             <small>Deletion successful</small>
