@@ -13,14 +13,27 @@ Ik verwacht dat volgende software reeds geïnstalleerd is:
 - [NodeJS](https://nodejs.org)
 - [Yarn](https://yarnpkg.com)
 - [MySQL Community Server](https://dev.mysql.com/downloads/mysql/)
-* in Firefox: `security.mixed_content.block_active_content` staat op `false` in `about:config`
-* of Chrome: slotje linksbovenaan in zoekbalk > site instellingen > onveilige content > toestaan
 
 ## Opstarten
 
-> Schrijf hier hoe we de applicatie starten (.env bestanden aanmaken, commando's om uit te voeren...)
+1. maak ".env" aan in root folder.
+1a. het bestand moet volgende structuur hebben:
+`REACT_APP_API_URL=http://localhost:9000/api (poort 9001 indien gebruik gemaakt wordt van nginx, gebruik dan ook https)
+REACT_APP_AUTH0_DOMAIN=<---VUL IN--->
+REACT_APP_AUTH0_CLIENT_ID=<---VUL IN--->
+REACT_APP_AUTH0_API_AUDIENCE=https://<---VUL IN--->`
 
+2. In package.json kan je het start script gebruiken om de web app op te starten of het test script gebruiken om de Cypress testen op te starten.
+Of je gebruikt de commando's `react-scripts start` en `npx cypress open` in de root folder.
 
 ## Testen
 
-> Schrijf hier hoe we de testen uitvoeren (.env bestanden aanmaken, commando's om uit te voeren...)
+1. maak ".env" aan in root folder.
+1a. het bestand moet volgende structuur hebben:
+`REACT_APP_API_URL=http://localhost:9000/api (poort 9001 indien gebruik gemaakt wordt van nginx, gebruik dan ook https)
+REACT_APP_AUTH0_DOMAIN=<---VUL IN--->
+REACT_APP_AUTH0_CLIENT_ID=<---VUL IN--->
+REACT_APP_AUTH0_API_AUDIENCE=https://<---VUL IN--->`
+
+2. start de api op (zie readme webservices)
+3. gebruik de "test" script in package.json of voer het commando `npx cypress open` uit in de root folder 
