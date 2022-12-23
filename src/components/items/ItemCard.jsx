@@ -90,7 +90,7 @@ export default memo(function ItemCard({props}) {
                     </Toast>
                 </ToastContainer> : null}
             {isDeleted ?
-                <ToastContainer className="p-3 fadeIn position-fixed" data-cy="edit_success_toast" position='bottom-center'>
+                <ToastContainer className="p-3 fadeIn position-fixed" data-cy="success_toast" position='bottom-center'>
                     <Toast bg="success">
                         <Toast.Header>
                             <strong className="me-auto">Venho</strong>

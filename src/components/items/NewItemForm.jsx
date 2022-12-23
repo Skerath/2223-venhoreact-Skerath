@@ -115,7 +115,7 @@ export const NewItemForm = () => {
                                 <Form.Group className="mb-3" controlId="formType">
                                     <Form.Label>Item Type</Form.Label>
                                     <Form.Select type="text"
-                                                 className={`bg-dark form ${touched.type && errors.type ? "is-invalid" : null}`}
+                                                 className={`bg-dark form ${touched.name && errors.type ? "is-invalid" : null}`}
                                                  name="type"
                                                  data-cy="type_select"
                                                  value={values.type}
