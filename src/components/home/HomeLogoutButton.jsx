@@ -6,6 +6,7 @@ function HomeLogoutButton() {
         <button id="4"
                 style={{color: "white"}}
                 className={`menu-item btn`}
+                data-cy="authenticationbutton"
                 onClick={() => logout({
                     returnTo: window.location.origin,
                 })}

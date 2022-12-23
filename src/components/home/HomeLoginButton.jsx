@@ -16,6 +16,7 @@ function HomeLoginButton() {
             type="button"
             style={{color: "white"}}
             className={`menu-item btn`}
+            data-cy="authenticationbutton"
             onClick={handleLogin}
         >
             Log in
