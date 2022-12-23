@@ -116,7 +116,7 @@ export default memo(function ItemCard({props}) {
                 <Card.Footer className="p-2">
                     <Card.Text className="mb-0">{beautifyText(itemType)} submitted by</Card.Text>
                     <Card.Text>{owner}</Card.Text>
-                    <Button key={"deleteButton"} variant="outline-light" type="button"
+                    <Button key={"deleteButton"} data-cy="delete_button" variant="outline-light" type="button"
                             onClick={event => handleDelete(event, itemId)}
                             className="d-inline-flex justify-content-center m-2">
                         <FiDelete/>

@@ -38,6 +38,7 @@ export default function FilterInput(props) {
                 type={filterObject.inputType}
                 min="0"
                 className="bg-dark form"
+                data-cy="filter_input"
                 placeholder=""
                 id={filterObject.inputType + filterObject.displayName + "Input"}
                 aria-label={filterObject.displayName}

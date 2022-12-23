@@ -6,7 +6,7 @@ import {
     useCallback,
 } from 'react';
 
-const baseUrl = `${process.env.REACT_APP_API_URL}/ingredients/?`;
+const baseUrl = `${process.env.REACT_APP_API_URL}/ingredients`;
 
 const useIngredients = () => {
     const {
@@ -18,7 +18,7 @@ const useIngredients = () => {
         const token = await getAccessTokenSilently();
         const {
             data
-        } = await axios.get(baseUrl + paramsQuery, {
+        } = await axios.get(`${baseUrl}/?${paramsQuery}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

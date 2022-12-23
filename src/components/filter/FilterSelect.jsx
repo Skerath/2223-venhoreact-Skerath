@@ -39,6 +39,7 @@ export default function FilterSelect(props) {
                 }}
                 onChange={onUserInput}
                 className="bg-dark form"
+                data-cy="filter_select"
                 defaultValue={defaultSelected.value}
                 id={"select" + filterObject.displayName + "Select"}
                 aria-label={filterObject.displayName}

@@ -14,7 +14,7 @@ const useItems = () => {
         const token = await getAccessTokenSilently();
         const {
             data
-        } = await axios.get(baseUrl + paramsQuery, {
+        } = await axios.get(`${baseUrl}/?${paramsQuery}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
