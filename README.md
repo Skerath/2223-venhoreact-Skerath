@@ -1,6 +1,4 @@
-# Examenopdracht Front-end Web Development / Web Services
-
-> Schrap hierboven wat niet past
+# Examenopdracht Front-end Web Development
 
 - Student: MAURICE CANTAERT
 - Studentennummer: 202181905
