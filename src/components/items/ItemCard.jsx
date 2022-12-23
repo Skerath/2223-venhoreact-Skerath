@@ -80,7 +80,7 @@ export default memo(function ItemCard({props}) {
         <>
             <Loader loading={isLoading} position="fixed"/>
             {error ?
-                <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
+                <ToastContainer className="p-3 fadeIn position-fixed" data-cy="error_toast" position='bottom-center'>
                     <Toast bg="danger" onClose={closeErrorToast}>
                         <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>
