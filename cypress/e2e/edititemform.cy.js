@@ -4,7 +4,7 @@ describe('new item with edit and deletion', () => {
         cy.login();
     });
 
-    it('should add item', () => {
+    it('should have been added', () => {
         cy.visit('http://localhost:3000/items/create');
         cy.get("[data-cy=name_input]").type("Item name test");
         cy.get("[data-cy=type_select]").select("Helmet");
@@ -14,7 +14,7 @@ describe('new item with edit and deletion', () => {
         cy.get("[data-cy=error_toast]").should('not.exist');
     });
 
-    it('should have a failed update', () => {
+    it('should have had a failed update', () => {
         cy.visit("http://localhost:3000/items");
         cy.get("[data-cy=filter_input").eq(0).type("Item name test");
         cy.get("[data-cy=filter_input").eq(2).type("e2e@test-hogent.be");

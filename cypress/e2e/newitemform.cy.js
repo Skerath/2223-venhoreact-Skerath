@@ -4,7 +4,7 @@ describe('new item form and deletion', () => {
         cy.login();
     });
 
-    it('should add item', () => {
+    it('should have been added', () => {
         cy.visit('http://localhost:3000/items/create');
         cy.get("[data-cy=name_input]").type("Item name test");
         cy.get("[data-cy=type_select]").select("Helmet");
