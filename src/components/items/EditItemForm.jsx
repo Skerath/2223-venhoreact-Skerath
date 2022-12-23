@@ -34,9 +34,10 @@ export const EditItemForm = ({currentValues, wantsClosed}) => {
     return (
         <ToastContainer className="p-3 toastCard fadeIn position-fixed" position="middle-center"
                         style={{width: "50rem"}}>
-            <Toast bg="secondary" onClose={wantsClosed} style={{width: "50rem"}}>
+            <Toast bg="secondary" onClose={wantsClosed} data-cy="edit_error_toast" style={{width: "50rem"}}>
                 {error ?
-                    <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
+                    <ToastContainer className="p-3 fadeIn position-fixed" data-cy="edit_error_toast"
+                                    position='bottom-center'>
                         <Toast bg="danger" onClose={closeErrorToast}>
                             <Toast.Header closeButton={true}>
                                 <strong className="me-auto">Venho</strong>
@@ -47,7 +48,8 @@ export const EditItemForm = ({currentValues, wantsClosed}) => {
                     </ToastContainer> : null
                 }
                 {result ?
-                    <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
+                    <ToastContainer className="p-3 fadeIn position-fixed" data-cy="edit_success_toast"
+                                    position='bottom-center'>
                         <Toast bg="success" onClose={closeSuccessToast}>
                             <Toast.Header closeButton={true}>
                                 <strong className="me-auto">Venho</strong>
@@ -108,6 +110,7 @@ export const EditItemForm = ({currentValues, wantsClosed}) => {
                                                   className={`bg-dark form ${touched.name && errors.name ? "is-invalid" : null}`}
                                                   placeholder="Ex.: Combat - Ragni Region"
                                                   name="name"
+                                                  data-cy="edit_name_input"
                                                   value={values.name}
                                                   onChange={handleChange}
                                                   onBlur={handleBlur}
@@ -119,6 +122,7 @@ export const EditItemForm = ({currentValues, wantsClosed}) => {
                                     <Form.Select type="text"
                                                  className={`bg-dark form ${touched.name && errors.type ? "is-invalid" : null}`}
                                                  name="type"
+                                                 data-cy="edit_name_select"
                                                  value={values.type}
                                                  onChange={handleChange}
                                                  onBlur={handleBlur}
@@ -148,6 +152,7 @@ export const EditItemForm = ({currentValues, wantsClosed}) => {
                                                   className={`bg-dark form ${touched.ingredient && errors.ingredient ? "is-invalid" : null}`}
                                                   placeholder="Ex.: Accursed Effigy"
                                                   name="ingredient"
+                                                  data-cy="edit_ingredient_input"
                                                   value={values.ingredient}
                                                   onChange={handleChange}
                                                   onBlur={handleBlur}
@@ -159,7 +164,8 @@ export const EditItemForm = ({currentValues, wantsClosed}) => {
                                         item type
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="outline-light" type="submit" disabled={isSubmitting}>
+                                <Button variant="outline-light" type="submit" data-cy="edit_submit_button"
+                                        disabled={isSubmitting}>
                                     {isSubmitting ? 'Submitting…' : 'Submit Item'}
                                 </Button>
                             </Form>

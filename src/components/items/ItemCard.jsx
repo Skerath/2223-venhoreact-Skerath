@@ -90,7 +90,7 @@ export default memo(function ItemCard({props}) {
                     </Toast>
                 </ToastContainer> : null}
             {isDeleted ?
-                <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
+                <ToastContainer className="p-3 fadeIn position-fixed" data-cy="edit_success_toast" position='bottom-center'>
                     <Toast bg="success">
                         <Toast.Header>
                             <strong className="me-auto">Venho</strong>
@@ -121,7 +121,7 @@ export default memo(function ItemCard({props}) {
                             className="d-inline-flex justify-content-center m-2">
                         <FiDelete/>
                     </Button>
-                    <Button key={"updateButton"} variant="outline-light" type="button"
+                    <Button key={"updateButton"} data-cy="edit_button" variant="outline-light" type="button"
                             onClick={event => handleEdit(event, itemId)}
                             className="d-inline-flex justify-content-center m-2">
                         <FiEdit2/>
