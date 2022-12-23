@@ -30,7 +30,7 @@ export const NewItemForm = () => {
     return (
         <>
             {error ?
-                <ToastContainer className="p-3 fadeIn position-fixed" position='bottom-center'>
+                <ToastContainer className="p-3 fadeIn position-fixed" data-cy="error_toast" position='bottom-center'>
                     <Toast bg="danger" onClose={closeErrorToast}>
                         <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>
@@ -40,7 +40,7 @@ export const NewItemForm = () => {
                     </Toast>
                 </ToastContainer> : null}
             {result ?
-                <ToastContainer className="p-3 position-fixed" position='bottom-center'>
+                <ToastContainer className="p-3 position-fixed" data-cy="success_toast" position='bottom-center'>
                     <Toast bg="success" onClose={closeSuccessToast}>
                         <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>
@@ -102,6 +102,7 @@ export const NewItemForm = () => {
                                                   className={`bg-dark form ${touched.name && errors.name ? "is-invalid" : null}`}
                                                   placeholder="Ex.: Combat - Ragni Region"
                                                   name="name"
+                                                  data-cy="name_input"
                                                   value={values.name}
                                                   onChange={handleChange}
                                                   onBlur={handleBlur}
@@ -114,8 +115,9 @@ export const NewItemForm = () => {
                                 <Form.Group className="mb-3" controlId="formType">
                                     <Form.Label>Item Type</Form.Label>
                                     <Form.Select type="text"
-                                                 className={`bg-dark form ${touched.name && errors.type ? "is-invalid" : null}`}
+                                                 className={`bg-dark form ${touched.type && errors.type ? "is-invalid" : null}`}
                                                  name="type"
+                                                 data-cy="type_select"
                                                  value={values.type}
                                                  onChange={handleChange}
                                                  onBlur={handleBlur}
@@ -145,6 +147,7 @@ export const NewItemForm = () => {
                                                   className={`bg-dark form ${touched.ingredient && errors.ingredient ? "is-invalid" : null}`}
                                                   placeholder="Ex.: Accursed Effigy"
                                                   name="ingredient"
+                                                  data-cy="ingredient_input"
                                                   value={values.ingredient}
                                                   onChange={handleChange}
                                                   onBlur={handleBlur}
@@ -155,7 +158,7 @@ export const NewItemForm = () => {
                                         item type
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="outline-light" type="submit" disabled={isSubmitting}>
+                                <Button variant="outline-light" type="submit" data-cy="submit_button" disabled={isSubmitting}>
                                     {isSubmitting ? 'Submitting…' : 'Submit Item'}
                                 </Button>
                             </Form>

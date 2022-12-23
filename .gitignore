@@ -126,4 +126,4 @@ dist
 .pnp.*
 
 # IntelliJ files
-.idea/
+.idea/!/cypress.env.json
