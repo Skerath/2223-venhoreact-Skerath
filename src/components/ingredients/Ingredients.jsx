@@ -3,7 +3,7 @@ import {useCallback, useEffect, useState} from "react";
 import useIngredients from '../../api/ingredientService';
 import {Error} from "../alert/Error";
 import {Message} from "../alert/Message";
-import Loader from "../Loader/Loader";
+import Loader from "../loader/Loader";
 
 const paramsQuery = (queryPrefix, data) => {
     return data.map((data, i) => {

@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import useItems from "../../api/itemService";
 import ToastContainer from "react-bootstrap/ToastContainer";
 import Toast from "react-bootstrap/Toast";
-import Loader from "../Loader/Loader";
+import Loader from "../loader/Loader";
 import {EditItemForm} from "./EditItemForm";
 
 const beautifyText = (input) => {
@@ -21,6 +21,7 @@ export default memo(function ItemCard({props}) {
     const [isDeleted, setIsDeleted] = useState(false);
 
     const closeErrorToast = () => setError(false);
+    const closeSuccessToast = () => setIsDeleted(false);
 
     const {
         ingredientUsed,
@@ -90,9 +91,11 @@ export default memo(function ItemCard({props}) {
                     </Toast>
                 </ToastContainer> : null}
             {isDeleted ?
-                <ToastContainer className="p-3 fadeIn position-fixed" data-cy="success_toast" position='bottom-center'>
+                <ToastContainer className="p-3 fadeIn position-fixed" onClose={closeSuccessToast}
+                                data-cy="success_toast"
+                                position='bottom-center'>
                     <Toast bg="success">
-                        <Toast.Header>
+                        <Toast.Header closeButton={true}>
                             <strong className="me-auto">Venho</strong>
                             <small>Deletion successful</small>
                         </Toast.Header>

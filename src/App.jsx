@@ -1,11 +1,11 @@
 import {Route, Routes} from "react-router";
 import {HomePage, IngredientsPage, ItemsPage, NewItemPage} from "./pages";
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import ScrollToTop from "./components/scrolltotop/ScrollToTop";
 import {PageNotFound} from "./components/pageNotFound/PageNotFound";
 import {Footer} from "./components/footer/Footer";
 import AuthLanding from "./components/authentication/AuthLanding";
 import RequireAuth from "./components/authentication/RequireAuth";
-import Navibar from "./components/Navibar/Navibar";
+import Navibar from "./components/navibar/Navibar";
 
 function App() {
     return (

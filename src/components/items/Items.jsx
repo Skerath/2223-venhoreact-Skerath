@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 import {Error} from "../alert/Error";
 import {Message} from "../alert/Message";
-import Loader from "../Loader/Loader";
+import Loader from "../loader/Loader";
 import useItems from "../../api/itemService";
 import ItemCard from "./ItemCard";
 
